@@ -1,0 +1,85 @@
+package site.semi.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import site.semi.dto.ItemDTO;
+
+public class ItemDAO extends JdbcDAO{
+	private static ItemDAO _dao;
+	private ItemDAO() {
+		// TODO Auto-generated constructor stub
+	}
+	static {
+		_dao=new ItemDAO();
+	}
+	public static ItemDAO getDAO() {
+		return _dao;
+	}
+	public List<ItemDTO> selectAllItem(){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<ItemDTO> list = new ArrayList<ItemDTO>();
+		String sql = "select * from item order by item_num";
+		try {
+			con=getConnection();
+			pstmt = con.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+				ItemDTO dto = new ItemDTO();
+				dto.setItem_num(rs.getInt(1));
+				dto.setItem_name(rs.getString(2));
+				dto.setItem_price(rs.getInt(3));
+				dto.setItem_category(rs.getString(4));
+				dto.setItem_info(rs.getString(5));
+				dto.setItem_reg(rs.getString(6).substring(0,10));
+				dto.setItem_img(rs.getString(7));
+				dto.setItem_color(rs.getString(8));
+				dto.setItem_count(rs.getInt(9));
+				list.add(dto);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(con, pstmt, rs);
+		}
+		return list;
+	}
+	public int selectItem(int no) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		ItemDTO dto = new ItemDTO();
+		
+		try {
+			con = getConnection();
+			String sql = "select * from item where item_num=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				dto.setItem_num(rs.getInt(1));
+				dto.setItem_name(rs.getString(2));
+				dto.setItem_price(rs.getInt(3));
+				dto.setItem_category(rs.getString(4));
+				dto.setItem_info(rs.getString(5));
+				dto.setItem_reg(rs.getString(6).substring(0,10));
+				dto.setItem_img(rs.getString(7));
+				dto.setItem_color(rs.getString(8));
+				dto.setItem_count(rs.getInt(9));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(con, pstmt, rs);
+		}
+		return no;
+	}
+}

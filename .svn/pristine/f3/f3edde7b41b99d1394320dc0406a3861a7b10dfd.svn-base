@@ -1,0 +1,293 @@
+<%@page import="java.text.DecimalFormat"%>
+<%@page import="site.semi.dao.SproductDAO"%>
+<%@page import="site.semi.dto.SproductDTO"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@include file="/security/login_url.jspf" %>
+ <%
+ 	int num=Integer.parseInt(request.getParameter("num"));
+ 	SproductDTO sproduct=SproductDAO.getDAO().selectNumSproduct(num);
+ 
+ 	
+ %>   
+
+
+
+
+<!-- 타이틀 -->
+<div id="layout_body" class="layout_body">
+	<div class="ajaxLineMap search_nav">
+		&nbsp;&nbsp;메인페이지<a class="home" href="<%=request.getContextPath()%>/index.jsp">&nbsp;&nbsp;홈</a>
+	</div>
+
+
+	<!-- 타이틀 -->
+	<div class="detail_title_area">
+		<h3 class="name"><%=sproduct.getName()%></h3>	
+			<div><p class="summary"><%=sproduct.getDetail()%></p></div>
+	</div>
+
+	<div id="goods_view">
+		<div class="goods_thumbs_spec">
+			<div id="goods_thumbs">
+						<img src="<%=request.getContextPath() %>/sproduct_image/mheader<%=num%>.png"  title="" />
+				<div class="slides_container hide" style="position: relative;">
+					<div class="viewImgWrap">
+					</div>
+				</div>
+			</div>
+
+			<!-- ++++++++++++++++++++++++ 상품 스펙 ++++++++++++++++++++++++ -->
+			<div id="goods_spec">
+				<form name="goodsForm" method="post" enctype="multipart/form-data"
+					target="actionFrame">
+					<input type="hidden" name="goodsSeq" value="49" />
+
+
+					<ul class="goods_spec_sections">
+
+						<!-- ~~~~~ 가격, 할인율, 할인내역 ~~~~~ -->
+						
+						<li class="goods_spec_sub_info">
+							<ul class="detail_spec_table">
+								<li class="th"><span designElement="text" textIndex="200"
+									textTemplatePath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvZ29vZHMvdmlldy5odG1s">상품이름</span></li>
+								<li><span class="gray_06" designElement="text"textIndex="200"extTemplatePath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvZ29vZHMvdmlldy5odG1s">
+									<%=sproduct.getName() %></span></li>
+								<li class="btn_area1"></li>
+							</ul>
+						</li>
+						<li class="goods_spec_brand">
+							<ul class="detail_spec_table">
+								<li class="th"><span designElement="text" textIndex="81"
+									textTemplatePath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvZ29vZHMvdmlldy5odG1s">상품정보</span></li>
+								<li><span class="gray_06" designElement="text"textIndex="200"extTemplatePath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvZ29vZHMvdmlldy5odG1s">
+									<%=sproduct.getDetail() %></span></li>
+								</li>
+							</ul>
+						</li>
+						<li class="goods_spec_brand">
+							<ul class="detail_spec_table">
+								<li class="th"><span designElement="text" textIndex="81"
+									textTemplatePath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvZ29vZHMvdmlldy5odG1s">상품색상</span></li>
+								<li><span class="gray_06" designElement="text"textIndex="200"extTemplatePath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvZ29vZHMvdmlldy5odG1s">
+									<%=sproduct.getColor() %></span></li>
+								</li>
+							</ul>
+						</li>
+							</ul>
+						</li>
+						<!-- ~~~~~ //상품정보 ~~~~~ -->
+						<!-- ~~~~~ 브랜드 ~~~~~ -->
+						<!-- ~~~~~ //브랜드 ~~~~~ -->
+					</ul>
+
+					<!-- ~~~~~~~~~~~ 구매하기 열기 섹션( 모바일 전용 ) ~~~~~~~~~~~ -->
+					
+					<!-- ~~~~~~~~~~~ 구매하기 ~~~~~~~~~~~ -->
+					<div id="goodsOptionBuySection" class="goods_buy_sections">
+						<a href="javascript:void(0);" id="btnSectionClose"
+							class="btn_section_close">닫기</a>
+
+						<div class="goods_option_select_area">
+							<script type="text/javascript">
+// 기존 option size 저장
+
+var old_height = $('.goods_option_select_area').height();
+$(document).ready(function(){
+	gl_option_select_ver	= $("input[name='gl_option_select_ver']").val();
+
+	var optObj			= new jscls_option_select();
+	optObj.set_init('1',
+					'49',
+					'64000',
+					'',
+					'responsive_camping_healing_gl',
+					true,
+					'1',
+					'0',
+					'',
+					'',
+					'divide',
+					'',
+					'',
+					'',
+					'',
+					'KRW', 
+					'&#x20a9;', 
+					'after',
+					'');
+
+
+
+	policyList = new Array();
+
+
+	optObj.set_cutting_sale_price('0.001', 'dscending');
+
+
+
+	// callback 함수 셋팅 :: 2016-02-04 lwh
+	optObj.set_selectbox_option('sbHolderOpen', 'sbHolderClose');
+
+	optObj.set_bind_option();
+	apply_input_style();
+});
+
+// 옵션 선택시 슬라이드 옵션창 재조정 :: 2019-02-07 lwh
+function sbHolderOpen(inst){
+	if ( window.innerWidth < 768 ) {
+		if ( old_height == 0 ) {
+			old_height = $('#select_option_lay .goods_option_area').height();
+		}
+		var opScrollHeight = $('#select_option_lay .goods_option_area').height();
+		var selectOptionHeight = $('#select_option_lay').find('.sbOptions:visible').height();
+		if ( selectOptionHeight > opScrollHeight - 77 ) {
+			$('#select_option_lay .goods_option_area').css( 'min-height', opScrollHeight + selectOptionHeight + 22 + 'px' );
+			$('#select_option_lay').find('.sbOptions').css( 'max-height', 'none' );
+		}
+	}
+}
+function sbHolderClose(inst){
+	// 선택된 옵션이 있는지 체크
+	if ( window.innerWidth < 768 ) {
+		if($(".goods_quantity_table_container").css('display') != 'block'){
+			$('#select_option_lay .goods_option_area').css( 'min-height', '0' );
+		}
+	}
+}
+</script>
+
+							<div id="select_option_lay">
+								<input type="hidden" name="option_select_goods_seq" value="49" />
+								<input type="hidden" name="option_select_provider_seq" value="1" />
+								<input type="hidden" name="gl_option_select_ver" value="0.1" />
+								<input type="hidden" name="use_add_action_button" value="n" />
+
+								<div class="goods_option_area">
+									<table class="goods_option_table" width="100%" cellpadding="0"
+										cellspacing="0" border="0">
+										<colgroup>
+											<col />
+											<col width="15" />
+										</colgroup>
+
+										<!-- 필수옵션 시작 -->
+										<%--<tr>
+											<th colspan="2"><span designElement="text" textIndex="1"
+												textTemplatePath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvZ29vZHMvX3NlbGVjdF9vcHRpb25zLmh0bWw=">상품옵션</span></th>
+										</tr>
+											<%--<tr class="optionTr">
+											<td colspan="2"><span class="optionTitle hide">색상</span>
+												<select name="viewOptions[]" id="0" opttype="color">
+													<option value="">- 색상 선택 -</option>
+													<option value="RED" price="64000.00" consumer_price="90000.00" opt1="브라운" opt2="" opt3=""
+														opt4="" opt5="" infomation="" class="" seq="0">빨강</option>
+													<option value="GREEN" price="64000.00" consumer_price="90000.00" opt1="라이트브라운" opt2="" opt3=""
+														opt4="" opt5="" infomation="" class="" seq="1">초록</option>
+													<option value="YELLOW" price="64000.00" consumer_price="90000.00" opt1="살구색" opt2="" opt3=""
+														opt4="" opt5="" infomation="" class="" seq="2">노랑</option>
+												
+											</select>
+												<div class="viewOptionsspecialays color">
+													<span class="#6b4d32"><span name="viewOptionsspecialbtn" class="viewOptionsspecialbtn hand bbs_btn #CC3300"
+														style="color: #CC3300;" value="브라운" optvalue="브라운" price="64000.00" opt1="브라운" opt2="" opt3="" opt4=""
+														opt5="" infomation="" eqindex='0'><font style="background-color:#CC3300">■</font></span></span>
+													<span class="#00FF00"><span name="viewOptionsspecialbtn" class="viewOptionsspecialbtn hand bbs_btn #00FF00"
+														style="color: #00FF00;" value="라이트브라운" optvalue="라이트브라운" price="64000.00" opt1="라이트브라운" opt2="" opt3="" opt4=""
+														opt5="" infomation="" eqindex='0'><font style="background-color: #00FF00;">■</font></span></span>
+													<span class="#FF9900"><span name="viewOptionsspecialbtn" class="viewOptionsspecialbtn hand bbs_btn #FF9900"
+														style="color:#FF9900;" value="살구색" optvalue="살구색" price="64000.00" opt1="살구색" opt2="" opt3="" opt4=""
+														opt5="" infomation="" eqindex='0'><font style="background-color:#FF9900;">■</font></span></span>
+												</div>
+											</td>
+										</tr>
+										<tr id="viewoptionsInfoTr" class="hide">
+											<td id="viewOptionsInfo" class="center" colspan="2"></td>
+										</tr>--%>
+										<!-- 필수옵션 끝 -->
+
+
+									</table>
+									<!-- 옵션 선택 영역 끝 -->
+									
+									</div>
+								</div>
+							</div>
+
+							<!-- //상품 옵션 인클루드 -->
+						</div>
+
+						<!-- 총 상품 금액 표기 시작-->
+						<div class="goods_price_area">
+							<table width="100%" cellpadding="0" cellspacing="0" border="0">
+								<tr>
+									<!-- 단일옵션일 경우 수량 -->
+									<td class="total_goods_price"><span
+										class="total_goods_tit" designElement="text" textIndex="106"
+										textTemplatePath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvZ29vZHMvdmlldy5odG1s">총 상품금액</span>
+										<span id="total_goods_price"><%=sproduct.getPrice()%></span>&nbsp;&#x20a9;</td>
+								</tr>
+							</table>
+						</div>
+						<!-- 총 상품 금액 표기 끝-->
+						<div class="goods_buttons_area">
+							<ul class="goods_buttons_section">
+								<li>
+									<ul class="basic_btn_area">
+										<li><button type="button" id="addcart" onclick="sproduct_cart_action();" >
+											<span>장바구니</span></button></li>
+										<li><button type="button" id="buy" onclick="goBuy();" class="btn_resp size_extra2 color2 NpayNo">
+												<span>구매하기</span>
+											</button></li>
+									</ul>
+
+								</li>
+							</ul>
+						</div>
+
+					</div>
+
+
+					<!-- 오프라인 쿠폰 -->
+					<!-- //오프라인 쿠폰 -->
+
+				</form>
+			</div>
+			<!-- ++++++++++++++++++++++++ //상품 스펙 ++++++++++++++++++++++++ -->
+		</div>
+
+	</div>
+	<!-- ================= 파트 페이지들 :: END. ================= -->
+</div>
+<%--장바구니로 보내기! --%>
+<script type="text/javascript">
+$("#addcart").click(function() {
+	location.href="<%=request.getContextPath()%>/index.jsp?workgroup=sproduct&work=sproduct_cart_action&num=<%=num%>&name=<%=sproduct.getName() %>&color=<%=sproduct.getColor() %>&image=<%=num %>&price=<%=sproduct.getPrice()%>&qty=<%=sproduct.getQty()%>&id=<%=loginMember%>";	
+});
+
+</script>
+<script type="text/javascript">
+	
+	$(function() {
+		/* 반응형 슬라이드 배너 관련( 절대 삭제 금지 ) */
+			$('.slider_before_loading').removeClass('slider_before_loading');
+
+		// 상품 색상 코드값 디자인( new 상품정보 )
+		if ( $('.displaY_color_option').length > 0 ) {
+			$('.displaY_color_option .areA').filter(function() {
+				return ( $(this).css('background-color') == 'rgb(255, 255, 255)' );
+			}).addClass('border');
+		}
+
+		$( window ).on('resize', function() {
+			if ( window.innerWidth != WINDOWWIDTH ) {
+				setTimeout(function(){ WINDOWWIDTH = window.innerWidth; }, 10);
+			}
+		});
+	});
+
+
+</script>
+

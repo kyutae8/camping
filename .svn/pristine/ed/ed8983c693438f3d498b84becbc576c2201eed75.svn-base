@@ -1,0 +1,27 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<!-- 
+<h1>게시글관리</h1> -->
+
+<div id="layout_body" class="layout_body">
+	<div id="boardlayout">
+		<div class="subpage_wrap">
+			<%-- <%@include file="/board/board_left.jsp"%> --%>
+			<div class="subpage_container">
+				<div class="title_container">
+					<h2>게시글관리</h2>
+				</div>
+				<br>
+				<div id="bbslist">
+					
+					<script type="text/javascript">
+						// FAQ 게시글 보기
+						$('.boad_faqview_btn').on('click', function() {
+							var board_seq = $(this).attr('board_seq');
+							$("#faqcontent_" + board_seq).toggle();
+						});
+					</script>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

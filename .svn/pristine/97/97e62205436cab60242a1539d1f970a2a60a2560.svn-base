@@ -1,0 +1,20 @@
+<%@page import="site.semi.dao.ItemDAO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+	int itemno = Integer.parseInt(request.getParameter("itemno"));
+	int itemcount = Integer.parseInt(request.getParameter("itemcount"));
+	
+	int row = ItemDAO.getDAO().updateBuy(itemno,itemcount);
+	if(row==0){%>
+		<Script type="text/javascript">
+		alert("구매가 안되");
+		</Script>
+	<%return;}else{%>
+		<script type="text/javascript">
+		alert("구매가 완료되었습니다.");
+		location.href='<%=request.getContextPath()%>/index.jsp?workgroup=product&work=product_list';
+		</script>
+	<%}
+	
+%>

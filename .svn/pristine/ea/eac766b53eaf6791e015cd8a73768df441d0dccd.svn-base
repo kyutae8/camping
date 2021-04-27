@@ -1,0 +1,97 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div id="layout_footer" class="layout_footer">
+	<div class="footer_a" >
+		<div class="resp_wrap">
+			<ul class="menu1">
+				<li class="foot_menu_d1 cs">
+					<h4 class="title"><a href="index.jsp?workgroup=company&work=cs" >CS Center</a></h4>
+					<ul class="list v4">
+						<li class="compay_phone">
+							<a href="tel:02-1234-5678">02-1234-5678</a>
+						</li>
+						<li>
+							<p><span>MON-FRI : AM 09:00 ~ PM 06:00 / SAT, SUN, HOLIDAY OFF</span></p>
+						</li>
+						<li class="Pt2"><p><span>LUNCH : AM 12:00 ~ PM 01:00</span></p></li>
+					</ul>
+				</li>
+				<li class="foot_menu_d2 bank">
+					<h4 class="title"><span>Banking Info</span></h4>
+					<ul class="list v3 gray_03">
+						<li>
+							<p>국민은행 000000-00-000000 / <span class="gray_06" >예금주 :</span> 김대표</p>
+						</li>
+						<li>
+							<p>신한은행 000-000-000000 / <span class="gray_06" >예금주 :</span> 김대표</p>
+						</li>
+					</ul>
+				</li>
+				<li class="foot_menu_d3">
+					<h4 class="title"><span>Community</span></h4>
+					<ul class="list v3 gray_03">
+						<li>
+							<a href="index.jsp?workgroup=board&work=notice">Notice</a>
+						</li>
+						<li>
+							<a href="index.jsp?workgroup=board&work=qa">Q&amp;A</a>
+						</li>
+						<li>
+							<a href="index.jsp?workgroup=board&work=review">Review</a>
+						</li>
+					</ul>
+				</li>
+				<li class="foot_menu_d4">
+					<h4 class="title"><span>Follow Us</span></h4>
+					<ul class="list v3 gray_03">
+						<li>
+							<a href="https://www.instagram.com/omirakitchen/">Instagram</a>
+						</li>
+						<li>
+							<a href="https://open.kakao.com/o/so5sYqXc">Kakao</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="footer_b">
+		<div class="resp_wrap">
+			<ul class="menu2">
+				<li><a href="index.jsp?workgroup=base&work=print" >HOME</a></li>
+				<li><a href="index.jsp?workgroup=company&work=company_hello" >COMPANY</a></li>
+				<li><a href="index.jsp?workgroup=company&work=agreement" >AGREEMENT</a></li>
+				<li><a href="index.jsp?workgroup=company&work=privacy" >PRIVACY POLICY</a></li>
+                <li><a href="index.jsp?workgroup=company&work=guide" >GUIDE</a></li>
+                <li><a href="index.jsp?workgroup=company&work=partner" ></a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="footer_c">
+		<div class="resp_wrap">
+			<ul class="menu3">
+				<li><span>COMPANY :</span> <span class="pcolor">(주) 귀사의 회사명</span></li>
+				<li><span>CEO :</span> <span class="pcolor">김대표 </span></li>
+				<li><span>ADDRESS :</span> <span class="pcolor">경기도 성남시 분당구 대왕판교로 670 (유스페이스2) </span></li>
+				<li><span>TEL :</span> <a href="tel:02-1234-5678" class="pcolor">02-1234-5678</a></li>
+				<li><span>FAX :</span> <span class="pcolor">031-1234-5678</span></li>
+				<li><span>BUSINESS LICENCE :</span> <span class="pcolor">123-45-67890 <a href="javascript:;" onclick="window.open('http://www.ftc.go.kr/bizCommPop.do?wrkr_no=1234567890','communicationViewPopup','width=750,height=700,scrollbars=yes')">[사업자정보확인]</a></span></li>
+				<li><span>ONLINE LICENCE :</span> <span class="pcolor">제1234-서울강남56789호</span></li>
+				<li><span >PRIVACY OFFICER :</span> <span class="pcolor">최정보 (<a class="pcolor" href="mailto:yourmail@yourdomain.com">yourmail@yourdomain.com</a>)</span></li>
+				<li>HOSTING PROVIDER : <span class="pcolor">(주)가비아씨엔에스</span></li>
+			</ul>
+			<p class="copyright">COPYRIGHT (c) <span class="pcolor">(주) 귀사의 회사명</span> ALL RIGHTS RESERVED.</p>
+			<div class="escrow"><script type="text/javascript">function f_escrowKicc(){window.open("http://www.easypay.co.kr/escrow/escrow_memb_auth.jsp?memb_id=GA123456", "kicc_escrow", "top=0,left=0,width=800,height=450,scrollbars,menubar=no,resizable,status,location=yes,toolbar=yes");}</script><img src="/proto/camping/data/icon/escrow_mark/kicc.png" style="cursor:pointer;" onclick="f_escrowKicc();" /></div>
+		</div>
+	</div>
+</div>
+
+<!-- 하단영역 : 끝 -->
+</html>

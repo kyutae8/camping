@@ -1,0 +1,62 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+	request.setCharacterEncoding("utf-8");
+%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<title>Insert title here</title>
+<style type="text/css">
+td{
+	height: 100px;
+	width: 140px;
+}
+input{
+	height: 32px;
+	width: 530px;
+}
+</style>
+</head>
+<body>
+	<div class="container text-center">
+		<h3>상품선택</h3>
+		<form>
+	    <input type="text" placeholder="상품 이름 검색123" height="50px">
+	    <button class="btn btn-default" style="margin-bottom: 2px">검색</button><br><br>
+		</form>
+		<table class="table table-bordered text-center">
+			<thead>
+				<tr>
+					<th class="text-center">이미지</th>
+					<th class="text-center" colspan="4">상품이름</th>
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>
+					<img src="test.png" width="100">
+					</td>
+					<td colspan="4" style="padding-top: 40px;"><a>상품의 이름</a></td>
+
+				</tr>
+			<!-- 	<tr>
+					<td>Mary</td>
+					<td colspan="4">Moe</td>
+
+				</tr>
+				<tr>
+					<td>July</td>
+					<td colspan="4">Dooley</td>
+
+				</tr> -->
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>

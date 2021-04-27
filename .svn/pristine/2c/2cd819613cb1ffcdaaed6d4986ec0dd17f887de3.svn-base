@@ -1,0 +1,25 @@
+<%@page import="java.text.DecimalFormat"%>
+<%@page import="site.semi.dao.SproductDAO"%>
+<%@page import="site.semi.dto.SproductDTO"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+ <%
+ 	int num=Integer.parseInt(request.getParameter("num"));
+
+ 	SproductDTO sproduct=SproductDAO.getDAO().selectNumSproduct(num);
+ %>   
+    
+
+	<div class="product">
+		<div><%=sproduct.getName() %></div>
+		<div><%=sproduct.getNum() %></div>
+		<div><%=sproduct.getColor() %></div>
+		<div><%=sproduct.getQty() %></div>
+		<div><%=sproduct.getPrice() %></div>
+		<div>
+			<img src="<%=request.getContextPath() %>/sproduct_image/mheader<%=num%>.png"/>
+		</div>
+		
+		</div>
+

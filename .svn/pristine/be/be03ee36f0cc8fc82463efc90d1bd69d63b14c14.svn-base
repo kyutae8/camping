@@ -1,0 +1,16 @@
+<%@page import="site.semi.dao.SproductDAO"%>
+<%@page import="site.semi.dto.SproductDTO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<h1>구매페이지</h1>
+ <%
+ 	int num=Integer.parseInt(request.getParameter("num"));
+
+ 	SproductDTO sproduct=SproductDAO.getDAO().selectNumSproduct(num);
+ %>   
+
+
+	<div class="detail_title_area">
+		<h3 class="name"><%=sproduct.getName()%></h3>	
+			<div><p class="summary"><%=sproduct.getDetail()%></p></div>
+	</div>

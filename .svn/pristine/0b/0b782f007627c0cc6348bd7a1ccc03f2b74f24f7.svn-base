@@ -1,0 +1,45 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="site.semi.dao.CartDAO"%>
+<%@page import="site.semi.dao.ItemDAO"%>
+<%@page import="site.semi.dto.ItemDTO"%>
+<%@page import="site.semi.dto.SmemberDTO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<%	
+	
+	String color = request.getParameter("color");
+	String itemno = request.getParameter("itemno");
+	String itemcount = request.getParameter("itemcount");
+	int rows = ItemDAO.getDAO().updateItemColor(color,Integer.parseInt(itemno));
+	if(rows==0){%>
+		<script type="text/javascript">
+	location.href="<%=request.getContextPath() %>/index.jsp?workgroup=error&work=error400";
+</script>
+		
+<% 	}else{%>
+		<script type="text/javascript">
+ location.href="<%=request.getContextPath() %>/index.jsp?workgroup=cart&work=cart_add&itemno=<%=itemno%>&color=<%=color%>&itemcount=<%=itemcount%>"; 
+</script>
+		
+	<% }
+	ArrayList<ItemDTO>itemList=(ArrayList<ItemDTO>)session.getAttribute("cart_list");
+	if(itemList==null){
+		itemList=new ArrayList<>();
+		session.setAttribute("cart_list", itemList);
+	}
+
+%>
+
+
+
+
+
+</body>
+</html>

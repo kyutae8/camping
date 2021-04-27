@@ -1,0 +1,27 @@
+<%@page import="java.util.UUID"%>
+<%@page import="site.semi.dao.SmemberDAO"%>
+<%@page import="site.semi.dto.SmemberDTO"%>
+<%@page import="site.semi.util.Utility"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+	if(request.getMethod().equals("GET")) {
+		out.println("<script type='text/javascript'>");
+		out.println("location.href='"+request.getContextPath()+"/index.jsp?workgroup=error&work=error400';");
+		out.println("</script>");
+		return;
+	}
+
+	String id=request.getParameter("id");
+	String email=request.getParameter("email");
+	
+	String temp=Utility.encrypt("temp");
+	
+	
+	SmemberDTO smember=new SmemberDTO();
+	smember.setPasswd(temp);
+	
+	SmemberDAO.getDAO().tempPasswd(id, email);
+%>
+
+<h1><br><%=temp %></h1>

@@ -1,0 +1,23 @@
+<%@page import="site.semi.dao.SproductDAO"%>
+<%@page import="site.semi.dto.SproductDTO"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@include file="/security/login_url.jspf" %>
+
+ <%
+ 	int num=Integer.parseInt(request.getParameter("num"));
+
+ 	SproductDTO sproduct=SproductDAO.getDAO().selectNumSproduct(num);
+ %>   
+	
+
+		<script type="text/javascript">
+		if(confirm("장바구니에 등록되었습니다! 확인하시겠습니까?")){
+		 location.href="<%=request.getContextPath() %>/index.jsp?workgroup=sproduct&work=sproduct_cart&num=<%=sproduct.getNum()%>";
+			
+		}else{
+			 location.href="<%=request.getContextPath() %>/index.jsp?workgroup=sproduct&work=sproduct_page&num=<%=sproduct.getNum()%>";
+		}
+		</script>
+	

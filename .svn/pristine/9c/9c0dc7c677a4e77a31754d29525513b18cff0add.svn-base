@@ -1,0 +1,78 @@
+<%-- CONSTRAINT SAWON_BNO_FK FOREIGN KEY(BNO) REFERENCES BUSEO(BNO)); --%>
+
+
+<form name="pd-form" class="pd-form" method="post" action="#">          		
+            		<div id="option" class="option">
+	            		<div id="colordiv" name="option-color" style="display:inline-block;">
+	            			<div id="color-div">
+	            				<span>colors</span>
+	            			</div>
+	 				  	  		<select name="color" id="color">
+	    				  			<option value="none" selected="selected">선택하세요</option>
+	    				  			
+	    							<option value="Pink">Pink</option>
+	    							
+	    							<option value="Red">Red</option>
+	    							
+	    							<option value="Black">Black</option>
+	    							
+	    							<option value="Blue">Blue</option>
+	    							
+						 	 	</select>
+						</div>
+						
+						<div id="sizediv" name="option-size" style="display:block;">
+							<div id="size-div">
+	            				<span>size</span>
+	            			</div>
+	 				  	  		<select name="size" id="size">
+	    				  			<option value="none" selected="selected">선택하세요</option>
+	    				  			
+	    							<option value="S">S</option>
+	    							
+	    							<option value="M">M</option>
+	    							
+	    							<option value="L">L</option>
+	    							
+						  		</select>
+						</div>
+					</div>
+					
+					
+					<div id="count">
+						<div id="count-span">
+							<span id="cntTitle">수량</span>
+						</div>
+						
+				  			<div class="form-group">
+				    			<div class="input-group">
+				      				<button id="count-btn" class="btn btn-default count-minus" type="button"><i class="fas fa-minus"></i></button>
+									<input name="productcode" value="100000003" type="hidden">
+				      				<input name="countbox" type="text" class="form-control countbox" id="exampleInputAmount" readonly="readonly" value="1">
+				      				<button id="count-btn" class="btn btn-default count-plus" type="button"><i class="fas fa-plus"></i></button>
+				    			</div>
+				 			 </div>
+						
+					</div>
+							<div id="message" style="margin-bottom: 19px; color: red;"></div>
+						
+					<div id="pagebutton">
+							<button id="leftbtn" type="button" class="btn btn-default">구매하기</button>
+							<button id="rightbtn" type="button" class="btn btn-default">장바구니</button>
+					</div>	
+					</form>		
+	
+	
+<script type="text/javascript">
+$("#leftbtn").click(function() {
+	var a=$("#size").val();
+	var b=$("#color").val();
+	if(a=="none" || b=="none"){
+		$("#message").text("옵션을 선택해주세요.");
+		return;
+	}
+	
+	$(".pd-form").attr("action","index46b8.html?part=order&amp;work=order");
+	$(".pd-form").submit();
+});
+</script>

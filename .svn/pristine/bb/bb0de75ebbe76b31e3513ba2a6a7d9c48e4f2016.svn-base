@@ -1,0 +1,65 @@
+<%@page import="site.semi.dto.SmemberDTO"%>
+<%@page import="com.oreilly.servlet.MultipartRequest"%>
+<%@page import="site.semi.dto.ScartDTO"%>
+<%@page import="java.util.Scanner"%>
+<%@page import="site.semi.dao.ScartDAO"%>
+<%@page import="site.semi.dao.ScartDAO"%>
+<%@page import="site.semi.dto.ScartDTO"%>
+<%@page import="site.semi.dao.SproductDAO"%>
+<%@page import="site.semi.dto.SproductDTO"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+ <% 
+	SmemberDTO loginMember=(SmemberDTO)session.getAttribute("loginMember");
+
+
+ 	int num=Integer.parseInt(request.getParameter("num"));
+ 	SproductDTO sproduct=SproductDAO.getDAO().selectNumSproduct(num);
+ 	
+ 	
+
+ 	String color = sproduct.getColor();
+ 	int price = sproduct.getPrice();
+ 	String name=sproduct.getName();
+ 	
+ 	String getId = "";
+ 	
+ 	if(loginMember != null){
+ 		getId = loginMember.getId();
+ 	 	System.out.println("getId : "+getId);
+ 	}
+ 	else{
+%>
+ 		<script>
+ 			alert('로그인 정보가 없습니다.');
+ 			location.href = "로그인페이지";
+ 		</script>
+<%
+ 	}
+ 	
+ 	
+ 	ScartDTO scart = new ScartDTO(); 
+ 	scart.setNum(num);
+ 	scart.setName(name);
+ 	scart.setColor(color);
+ 	scart.setId(getId);
+ 	scart.setPrice(price);
+ 	
+ 	ScartDAO.getDAO().insertScart(scart);
+ 
+ 	
+ 	System.out.println("여기");
+ 	
+ %>   
+	
+
+		<script type="text/javascript">
+		if(confirm("장바구니에 등록되었습니다! 확인하시겠습니까?")){
+		 location.href="<%=request.getContextPath() %>/index.jsp?workgroup=sproduct&work=sproduct_cart";
+			
+		}else{
+			 location.href="<%=request.getContextPath() %>/index.jsp?workgroup=sproduct&work=sproduct_page&num=<%=sproduct.getNum()%>";
+		}
+		</script>
+	

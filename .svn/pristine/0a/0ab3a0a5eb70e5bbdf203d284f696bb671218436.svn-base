@@ -1,0 +1,14 @@
+<%@page import="site.semi.dto.SmemberDTO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+	//세션에 저장된 권한 관련 정보를 반환받아 저장
+	SmemberDTO loginMember=(SmemberDTO)session.getAttribute("loginMember");
+
+	if(loginMember==null) {
+		out.println("<script type='text/javascript'>");
+		out.println("location.href='"+request.getContextPath()+"/index.jsp?workgroup=error&work=error400';");
+		out.println("</script>");
+		return;
+	}
+%>    

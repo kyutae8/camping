@@ -1,0 +1,54 @@
+<%@page import="site.semi.dao.CartDAO"%>
+<%@page import="site.semi.dao.ItemDAO"%>
+<%@page import="site.semi.dto.ItemDTO"%>
+<%@page import="site.semi.dto.SmemberDTO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
+	<%
+//String Item_num = request.getParameter("itemno");
+//String Total_price = request.getParameter("itemno");
+//String Item_stock = request.getParameter("itemno");
+//String color = request.getParameter("color");
+
+SmemberDTO loginMember=(SmemberDTO)session.getAttribute("loginMember");
+String id = request.getParameter("id");
+String pageNum="1";
+//System.out.println(loginMember.getId());
+if(loginMember==null) {
+	out.println("<script type='text/javascript'>");
+	out.println("location.href='"+request.getContextPath()+"/index.jsp?workgroup=member&work=login';");
+	out.println("</script>");
+	return;
+
+}
+
+String itemcolor = request.getParameter("color");
+int itemno = Integer.parseInt(request.getParameter("itemno"));
+
+ItemDTO dto = ItemDAO.getDAO().selectItem(itemno);
+String Item_name = dto.getItem_name();
+int originPrice = dto.getItem_price();
+int salePrice = (int)(dto.getItem_price()*0.29);
+int totalPrice = originPrice-salePrice; 
+
+
+
+//int Item_price=totalPrice*갯수;
+int rows = CartDAO.getDAO().addCart(id);
+	if(rows==null){%>
+	<script type="text/javascript">
+	location.href="<%=request.getContextPath() %>/index.jsp?workgroup=error&work=error400";
+
+	</script>
+
+	<%}else{%>
+ <script type="text/javascript">
+ location.href="<%=request.getContextPath() %>/index.jsp?workgroup=cart&work=cart_list&itemno=<%=itemno%>&color=<%=itemcolor%>"; 
+	
+	<% }%>
+</script>
+
+
+
+

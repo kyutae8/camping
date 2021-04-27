@@ -1,0 +1,28 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<style>
+
+.amain {
+
+	align-content: center;
+	width: 1300px;
+	height: 900px;
+	margin: 0 auto;
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+
+.atext {
+
+	text-align: center;
+	size: 60em;
+	color: white;
+}
+
+</style>
+<div id="layout_body" class="layout_body">
+<img src="<%=request.getContextPath()%>/images/amain.gif" class="amain">
+<p class="atext">즐거운 코딩즐거운 코딩즐거운 코딩즐거운 코딩즐거운 코딩즐거운 코딩즐거운 코딩즐거운 코딩즐거운 코딩즐거운 코딩즐거운 코딩즐거운 코딩</p>
+
+</div>

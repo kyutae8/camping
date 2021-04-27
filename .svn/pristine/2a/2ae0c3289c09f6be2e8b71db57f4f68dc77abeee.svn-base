@@ -1,0 +1,211 @@
+﻿<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>장바구니</title>
+		<!-- ================= 파트 페이지들 :: START. ================= -->
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++
+@@ 장바구니 @@
+- 파일위치 : [스킨폴더]/order/cart.html
+++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/font.css" />
+
+<!-- 구글 웹폰트 -->
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700&amp;subset=korean" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700" rel="stylesheet">
+
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/jqueryui/black-tie/jquery-ui-1.8.16.custom.css" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/slick.css"><!-- 반응형 슬라이드 -->
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/lib.css" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/common.css" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/board.css" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/buttons.css" />
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/broadcast.css" /> 
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/user.css" /><!-- ++++++++++++ 스킨 사용자/제작자 CSS ++++++++++++ -->
+
+<!-- /CSS -->
+<link rel="stylesheet" type="text/css" href="<%=request.getContextPath() %>/css/javascript/plugin/jquery_swipe/jquery_swipe.css" />
+<!-- 자바스크립트 -->
+<script src="<%=request.getContextPath() %>/css/javascript/jquery/jquery.min.js"></script>
+<script src="<%=request.getContextPath() %>/css/javascript/jquery/jquery-ui.min.js"></script>
+<script src="<%=request.getContextPath() %>/css/javascript/plugin/jquery.poshytip.min.js"></script>
+<script src="<%=request.getContextPath() %>/css/javascript/plugin/jquery.activity-indicator-1.0.0.min.js"></script>
+<script src="<%=request.getContextPath() %>/css/javascript/plugin/jquery.cookie.js"></script>
+<script src="<%=request.getContextPath() %>/css/javascript/plugin/jquery.slides.min.js"></script>
+<script src="<%=request.getContextPath() %>/css/javascript/plugin/jquery.placeholder.js"></script>
+<script src="<%=request.getContextPath() %>/css/javascript/plugin/validate/jquery.validate.js"></script>
+<script src="<%=request.getContextPath() %>/css/javascript/plugin/ezmark/js/jquery.ezmark.min.js"></script>
+<script src="<%=request.getContextPath() %>/css/javascript/plugin/custom-select-box.js"></script>
+<script src="<%=request.getContextPath() %>/css/javascript/plugin/custom-mobile-pagination.js"></script>
+<script src="<%=request.getContextPath() %>/css/javascript/plugin/slick/slick.min.js"></script>
+<script src="<%=request.getContextPath() %>/css/javascript/plugin/jquery_swipe/jquery.event.swipe.js"></script>
+<script src="<%=request.getContextPath() %>/css/javascript/plugin/touchSlider/swiper.js"></script>
+<script type='text/javascript'>var fbv='3.2';</script><script type='text/javascript' src='/app/javascript/js/facebook.js?v=20150501' charset='utf8'></script>
+
+<script type="text/javascript"
+	src="../data/skin/responsive_camping_healing_gl/common/search_ver2_ready.js"></script>
+<div class="subpage_wrap">
+
+	<!-- +++++ mypage LNB ++++ -->
+	<div id="subpageLNB" class="subpage_lnb">
+		<div id="mypageLnbBasic">
+			<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++
+		@@ 마이페이지 LNB 공통 @@
+		- 파일위치 : [스킨폴더]/mypage/mypage_lnb.html
+		++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+			<h2 class="title1">
+				<a href="/mypage" designelement="text" textindex="1"
+					texttemplatepath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvbXlwYWdlL215cGFnZV9sbmIuaHRtbA==">MY
+					SHOPPING</a>
+			</h2>
+			<h3 class="title2">
+				<a href="/mypage/order_catalog" designelement="text" textindex="2"
+					texttemplatepath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvbXlwYWdlL215cGFnZV9sbmIuaHRtbA==">나의
+					쇼핑</a>
+			</h3>
+			<ul class="lnb_sub">
+				<li class="on"><a href="/mypage/order_catalog"
+					designelement="text" textindex="3"
+					texttemplatepath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvbXlwYWdlL215cGFnZV9sbmIuaHRtbA==">주문/배송</a></li>
+				<li><a href="/mypage/return_catalog" designelement="text"
+					textindex="4"
+					texttemplatepath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvbXlwYWdlL215cGFnZV9sbmIuaHRtbA==">반품/교환</a></li>
+				<li><a href="/mypage/refund_catalog" designelement="text"
+					textindex="5"
+					texttemplatepath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvbXlwYWdlL215cGFnZV9sbmIuaHRtbA==">취소/환불</a></li>
+				<li><a href="/mypage/wish" designelement="text" textindex="6"
+					texttemplatepath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvbXlwYWdlL215cGFnZV9sbmIuaHRtbA==">위시리스트</a></li>
+				<li><a href="/goods/recently" designelement="text"
+					textindex="7"
+					texttemplatepath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvbXlwYWdlL215cGFnZV9sbmIuaHRtbA==">최근
+						본 상품</a></li>
+				<li><a href="/mypage/delivery_address?tab=1"
+					designelement="text" textindex="8"
+					texttemplatepath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvbXlwYWdlL215cGFnZV9sbmIuaHRtbA==">배송주소록</a></li>
+				<li><a href="/mypage/taxinvoice" designelement="text"
+					textindex="9"
+					texttemplatepath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvbXlwYWdlL215cGFnZV9sbmIuaHRtbA==">세금계산서</a></li>
+				<li><a href="/mypage/personal" designelement="text"
+					textindex="10"
+					texttemplatepath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvbXlwYWdlL215cGFnZV9sbmIuaHRtbA==">개인결제</a></li>
+			</ul>
+			<h3 class="title2">
+				<a href="/mypage/emoney" designelement="text" textindex="11"
+					texttemplatepath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvbXlwYWdlL215cGFnZV9sbmIuaHRtbA==">나의
+					혜택</a>
+			</h3>
+			<ul class="lnb_sub">
+				<li><a href="/mypage/emoney" designelement="text"
+					textindex="12"
+					texttemplatepath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvbXlwYWdlL215cGFnZV9sbmIuaHRtbA==">마일리지</a></li>
+				<li><a href="/mypage/coupon" designelement="text"
+					textindex="13"
+					texttemplatepath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvbXlwYWdlL215cGFnZV9sbmIuaHRtbA==">쿠폰</a></li>
+				<li><a href="/mypage/cash" designelement="text" textindex="14"
+					texttemplatepath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvbXlwYWdlL215cGFnZV9sbmIuaHRtbA==">예치금</a></li>
+				<li><a href="/mypage/promotion" designelement="text"
+					textindex="17"
+					texttemplatepath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvbXlwYWdlL215cGFnZV9sbmIuaHRtbA==">혜택
+						교환</a></li>
+			</ul>
+			<h3 class="title2">
+				<a href="/mypage/myqna_catalog" designelement="text" textindex="18"
+					texttemplatepath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvbXlwYWdlL215cGFnZV9sbmIuaHRtbA==">나의
+					활동</a>
+			</h3>
+			<ul class="lnb_sub">
+				<li><a href="/mypage/myqna_catalog" designelement="text"
+					textindex="19"
+					texttemplatepath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvbXlwYWdlL215cGFnZV9sbmIuaHRtbA==">나의
+						1:1문의</a></li>
+				<li><a href="/mypage/mygdqna_catalog" designelement="text"
+					textindex="20"
+					texttemplatepath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvbXlwYWdlL215cGFnZV9sbmIuaHRtbA==">나의
+						상품문의</a></li>
+				<li><a href="/mypage/mygdreview_catalog" designelement="text"
+					textindex="21"
+					texttemplatepath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvbXlwYWdlL215cGFnZV9sbmIuaHRtbA==">나의
+						상품후기</a></li>
+				<li><a href="/mypage/my_minishop" designelement="text"
+					textindex="22"
+					texttemplatepath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvbXlwYWdlL215cGFnZV9sbmIuaHRtbA==">나의
+						단골 미니샵</a></li>
+			</ul>
+			<h3 class="title2">
+				<a href="/mypage/myinfo" designelement="text" textindex="23"
+					texttemplatepath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvbXlwYWdlL215cGFnZV9sbmIuaHRtbA==">나의
+					정보</a>
+			</h3>
+			<ul class="lnb_sub">
+				<li><a href="/mypage/myinfo" designelement="text"
+					textindex="24"
+					texttemplatepath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvbXlwYWdlL215cGFnZV9sbmIuaHRtbA==">회원정보
+						수정</a></li>
+				<li><a href="/mypage/withdrawal" designelement="text"
+					textindex="25"
+					texttemplatepath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvbXlwYWdlL215cGFnZV9sbmIuaHRtbA==">회원
+						탈퇴</a></li>
+			</ul>
+		</div>
+	</div>
+	<!-- +++++ //mypage LNB ++++ -->
+
+	<!-- +++++ mypage contents ++++ -->
+	<div class="subpage_container">
+		<!-- 전체 메뉴 -->
+		<a id="subAllButton" class="btn_sub_all" href="javascript:void(0)">MENU</a>
+
+		<!-- 타이틀 -->
+		<div class="title_container">
+			<h2>
+				<span designelement="text" textindex="1"
+					texttemplatepath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvbXlwYWdlL29yZGVyX2NhdGFsb2cuaHRtbA==">주문/배송
+					내역</span>
+			</h2>
+		</div>
+		<div class="mypage_greeting">
+			전체 <span class="pointnum">0</span>건
+		</div>
+
+		<form name="orderSearchForm" id="orderSearchForm" method="get"
+			action="order_catalog">
+			<input type="hidden" name="step_type" value="">
+			<ul class="myorder_sort">
+				<li class="list3"><span class="td"> <select
+						name="sc_date">
+							<option value="0">전체</option>
+							<option value="1">1주</option>
+							<option value="2">2주</option>
+							<option value="3" selected="">3주</option>
+							<option value="4">1개월</option>
+							<option value="8">2개월</option>
+							<option value="12">3개월</option>
+							<option value="direct">직접검색</option>
+
+					</select>
+				</span> <span id="directArea" class="direct_area Hide"> <input
+						type="text" name="sc_sdate" size="10" value="2021-02-03"
+						class="sc-datepicker hasDatepicker" readonly=""
+						id="dp1614043487417"> - <input type="text" name="sc_edate"
+						size="10" value="2021-02-23" class="sc-datepicker hasDatepicker"
+						readonly="" id="dp1614043487418">
+						<button type="submit" class="btn_resp size_b">검색</button>
+				</span></li>
+			</ul>
+		</form>
+
+		<div class="no_data_area2">주문내역이 없습니다.</div>
+
+	</div>
+	<!-- +++++ //mypage contents ++++ -->
+</div>
+</head>
+
+<body>
+	
+
+</body>
+<%@include file="../footer.jsp"%>
+</html>

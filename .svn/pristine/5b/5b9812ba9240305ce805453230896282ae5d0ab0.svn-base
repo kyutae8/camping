@@ -1,0 +1,82 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<div class="resp_login_wrap Mt10">
+	<!-- 탭 -->
+	<div class="tab_basic fullsize Mb0">
+		<ul id="idPwTab">
+			<li class="on"><a href="javascript:void(0)" data-tab="idFindArea"><span designElement="text" textIndex="2"  textTemplatePath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvbWVtYmVyL2ZpbmQuaHRtbA==" >아이디 찾기</span></a></li>
+			<li><a href="index.jsp?workgroup=member&work=findpasswd" data-tab="pwFindArea"><span designElement="text" textIndex="3"  textTemplatePath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvbWVtYmVyL2ZpbmQuaHRtbA==" >비밀번호 찾기</span></a></li>
+		</ul>
+	</div>
+	<!-- +++++++++++++++++++++ 아이디 찾기 +++++++++++++++++++++ -->
+	<div class="idPwContents" id="idFindArea">
+		<a name="findid"></a>
+		<form name="loginForm" target="actionFrame" method="post" action="http://responsive-sample30.firstmall.kr/login_process/findid">
+			<div id="findidfromlay">
+				<h3 class="title_sub2 v2 Mt20"><b><span designElement="text" textIndex="15"  textTemplatePath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvbWVtYmVyL2ZpbmQuaHRtbA==" >등록 정보로 아이디 찾기</span></b></h3>
+				<p class="gray_06 C" designElement="text" textIndex="16"  textTemplatePath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvbWVtYmVyL2ZpbmQuaHRtbA==" >회원가입 시 등록한 정보로 찾을 수 있습니다.</p>
+				<div class="label_group v2">
+					<label><input type="radio" name="find_gb" value="email" checked /> <span designElement="text" textIndex="17"  textTemplatePath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvbWVtYmVyL2ZpbmQuaHRtbA==" >이메일</span></label>
+				</div>
+				<div class="resp_join_table v2 th_size3">
+					<ul>
+						<li class="th "><p designElement="text" textIndex="19"  textTemplatePath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvbWVtYmVyL2ZpbmQuaHRtbA==" >이름</p></li>
+						<li class="td">
+							<input type="text" name="user_name" value="" class="size_full" />
+						</li>
+					</ul>
+					<ul id="id_em">
+						<li class="th "><p designElement="text" textIndex="20"  textTemplatePath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvbWVtYmVyL2ZpbmQuaHRtbA==" >이메일</p></li>
+						<li class="td">
+							<input type="email" name="email" value="" class="size_full" />
+						</li>
+					</ul>
+					<ul id="id_cp" style="display:none;">
+						<li class="th "><p designElement="text" textIndex="21"  textTemplatePath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvbWVtYmVyL2ZpbmQuaHRtbA==" >휴대폰</p></li>
+						<li class="td">
+							<input type="tel" name="cellphone[]" value="" class="size_phone" /> - 
+							<input type="tel" name="cellphone[]" value="" class="size_phone" /> - 
+							<input type="tel" name="cellphone[]" value="" class="size_phone" />
+						</li>
+					</ul>
+					<ul>
+						<li class="th "><p designElement="text" textIndex="22"  textTemplatePath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvbWVtYmVyL2ZpbmQuaHRtbA==" >보안문자</p></li>
+						<li class="td">
+							<div class="captcha_wrap"><div class="captcha_wrap"><table class="captcha_table" cellpadding="0" cellspacing="0" border="0"><tr><td class="captcha_td" rowspan="2"><div class="captcha_img"><img align="left" id="captcha_id_image" src="../admin/captcha/securimage_show2385.png?namespace=id_search&amp;829eeec548bbfd931b35c56f912c7700" alt="CAPTCHA Image" /></div></td></tr><tr><td class="captcha_td2"><a id="ref_btn" tabindex="-1" style="border: 0" href="#" title="Refresh Image" onclick="document.getElementById('captcha_id_image').src = '/admin/captcha/securimage_show?namespace=id_search&' + Math.random(); this.blur(); return false"><img src="../admin/skin/default/images/captcha/admin_refresh.gif" alt="Refresh Image" onclick="this.blur()" border="0" /></a></td></tr></table></div><div class="captcha_text"><input type="text" name="captcha_id_txt" id="captcha_id_search" title="보안 문자 입력"  /></div></div>
+						</li>
+					</ul>
+				</div>
+				<div class="btn_area_b">
+					<button type="submit" class="btn_resp size_c color2 Wmax" /><span designElement="text" textIndex="23"  textTemplatePath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvbWVtYmVyL2ZpbmQuaHRtbA==" >확인</span></button>
+				</div>
+			</div>
+
+			<!-- 아이디 찾기 결과 -->
+			<div id="findidresultlay" class="find_id_result" style="display:none;">
+				<div class="auth_result">
+					<div class="findidresultok1">
+						<p designElement="text" textIndex="24"  textTemplatePath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvbWVtYmVyL2ZpbmQuaHRtbA==" >고객님의 아이디는 <strong class="pointcolor2" id="findidlay1"></strong> 입니다.</p>
+					</div>
+					<div class="findidresultok2 hide">
+						<p designElement="text" textIndex="25"  textTemplatePath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvbWVtYmVyL2ZpbmQuaHRtbA==" >회원 이메일 주소(<strong class="pointcolor2" id="findidlay2"></strong>)로 정보가 발송되었습니다.<br/>메일을 확인하시기 바랍니다.</p>
+					</div>
+					<div class="findidresultok3 hide">
+						<p designElement="text" textIndex="26"  textTemplatePath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvbWVtYmVyL2ZpbmQuaHRtbA==" >회원 휴대폰(<strong class="blue" id="findidlay3"></strong>)으로 정보가 발송되었습니다.<br/>SMS를 확인하시기 바랍니다.</p>
+					</div>
+					<div class="findidresultfalse">
+						<p designElement="text" textIndex="27"  textTemplatePath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvbWVtYmVyL2ZpbmQuaHRtbA==" ><strong class="pointcolor">일치하는 정보가 없습니다.</strong><br/>아이디 찾기 방법을 변경하거나 회원가입을 해주세요.</p>
+					</div>
+					<div class="findidresultok1 findidresultok2 findidresultok3 btn_area_c hide">
+						<a href="javascript:;" class="btn_find_pw btn_resp size_c color2"><span designElement="text" textIndex="28"  textTemplatePath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvbWVtYmVyL2ZpbmQuaHRtbA==" >비밀번호 찾기</span></a>
+						<a href="login6bc3.html?return_url=/main" class="btn_resp size_c color5"><span designElement="text" textIndex="29"  textTemplatePath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvbWVtYmVyL2ZpbmQuaHRtbA==" >로그인</span></a>
+					</div>
+					<div class="findidresultfalse btn_area_c hide">
+						<a href="javascript:;" class="btn_find_id btn_resp size_c color2"><span designElement="text" textIndex="30"  textTemplatePath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvbWVtYmVyL2ZpbmQuaHRtbA==" >아이디 찾기</span></a>
+						<a href="agreement.html" class="btn_resp size_c color5"><span designElement="text" textIndex="31"  textTemplatePath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvbWVtYmVyL2ZpbmQuaHRtbA==" >회원가입</span></a>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	</div>
+	<!-- +++++++++++++++++++++ //아이디 찾기 +++++++++++++++++++++ -->

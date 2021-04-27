@@ -1,0 +1,42 @@
+@charset "utf-8";
+
+/*******************************************
+Author : 퍼스트몰(firstmall)
+Author URL : http://www.firstmall.kr
+Creation Date : 2016-06-01
+Modify Date : 2017-07-31
+*******************************************/
+
+/* 모바일 페이징 스타일*/
+ul.mobile_pagination_paging_style_1 {display:inline-block; *zoom:1}
+ul.mobile_pagination_paging_style_1:after {content:""; display:block; clear:both}
+ul.mobile_pagination_paging_style_1 li {float:left; margin-left:8px; width:13px; height:13px; background:url('../images/common/paging/navi_dot.png') no-repeat; overflow:hidden; text-indent:-1000px;}
+ul.mobile_pagination_paging_style_1 li.current {background:url('../images/common/paging/navi_dot_on.png') no-repeat;}
+ul.mobile_pagination_paging_style_1 li:first-child {margin-left:0px;}
+
+ul.mobile_pagination_paging_style_2 {display:inline-block; *zoom:1}
+ul.mobile_pagination_paging_style_2:after {content:""; display:block; clear:both}
+ul.mobile_pagination_paging_style_2 li {float:left; margin-left:8px; width:12px; height:12px; background:url('../images/common/paging/navi_squ.png') no-repeat; overflow:hidden; text-indent:-1000px;}
+ul.mobile_pagination_paging_style_2 li.current {background:url('../images/common/paging/navi_squ_on.png') no-repeat;}
+ul.mobile_pagination_paging_style_2 li:first-child {margin-left:0px;}
+
+ul.mobile_pagination_paging_style_3 {display:inline-block; *zoom:1}
+ul.mobile_pagination_paging_style_3:after {content:""; display:block; clear:both}
+ul.mobile_pagination_paging_style_3 li {float:left; width:30px; height:5px; background-color:#a2a2a2; overflow:hidden; text-indent:-1000px;}
+ul.mobile_pagination_paging_style_3 li.current {background-color:#ff5212;}
+
+ul.mobile_pagination_paging_style_4 {display:inline-block; *zoom:1; padding:0 35px; height:20px; position:relative;}
+ul.mobile_pagination_paging_style_4:after {content:""; display:block; clear:both}
+ul.mobile_pagination_paging_style_4 li.paging_btn_prev {position:absolute; width:30px; height:20px; left:0px; top:0px; background:url('../images/common/paging/navi_btn_prev.png') no-repeat; overflow:hidden; text-indent:-1000px;}
+ul.mobile_pagination_paging_style_4 li.paging_btn_body {text-align:center; color:#aaaaaa; letter-spacing:3px; /*font-family:tahoma;*/}
+ul.mobile_pagination_paging_style_4 li.paging_btn_body .paging_btn_num_now {font-size:12px; color:#f04100; font-weight:600;}
+ul.mobile_pagination_paging_style_4 li.paging_btn_body .paging_btn_num_max {font-size:12px; color:#999999; font-weight:600;}
+ul.mobile_pagination_paging_style_4 li.paging_btn_next {position:absolute; width:30px; height:20px; right:0px; top:0px; background:url('../images/common/paging/navi_btn_next.png') no-repeat; overflow:hidden; text-indent:-1000px;}
+
+ul.mobile_pagination_paging_style_5 {display:inline-block; *zoom:1; width:94px; height:30px; position:relative; background:url('../images/common/paging/navi_btn2_bg.png') no-repeat;}
+ul.mobile_pagination_paging_style_5:after {content:""; display:block; clear:both}
+ul.mobile_pagination_paging_style_5 li.paging_btn_prev {position:absolute; width:8px; height:13px; left:10px; top:8px; background:url('../images/common/paging/navi_btn2_prev.png') no-repeat; overflow:hidden; text-indent:-1000px;}
+ul.mobile_pagination_paging_style_5 li.paging_btn_body {text-align:center; color:#eeeeee; letter-spacing:3px; /*font-family:tahoma;*/ line-height:28px;}
+ul.mobile_pagination_paging_style_5 li.paging_btn_body .paging_btn_num_now {font-size:12px; color:#00eaff; font-weight:600;}
+ul.mobile_pagination_paging_style_5 li.paging_btn_body .paging_btn_num_max {font-size:12px; color:#ffffff; font-weight:600;}
+ul.mobile_pagination_paging_style_5 li.paging_btn_next {position:absolute; width:8px; height:13px; right:10px; top:8px; background:url('../images/common/paging/navi_btn2_next.png') no-repeat; overflow:hidden; text-indent:-1000px;}

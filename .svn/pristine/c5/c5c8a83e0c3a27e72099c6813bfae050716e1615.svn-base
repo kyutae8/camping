@@ -1,0 +1,531 @@
+<%@page import="site.semi.dao.ItemDAO"%>
+<%@page import="site.semi.dto.ItemDTO"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%
+	String itemno = request.getParameter("itemno");
+	if (itemno == null) {
+%>
+<script type="text/javascript">
+	location.href="<%=request.getContextPath()%>/error/error400.jsp";
+</script>
+<%
+	}
+	ItemDTO dto = ItemDAO.getDAO().selectItem(Integer.parseInt(itemno));
+	
+%>
+<!-- <style>
+#layout_body {
+background-color:#ffffff;}
+#layer_pay {position:absolute;top:0px;width:100%;height:100%;background-color:#ffffff;text-align:center;z-index:999999;}
+#payprocessing {text-align:center;position:absolute;width:100%;top:150px;z-index:99999999px;}
+</style> -->
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/font.css" />
+
+<!-- 구글 웹폰트 -->
+<link
+	href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700&amp;subset=korean"
+	rel="stylesheet">
+<link
+	href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700"
+	rel="stylesheet">
+
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/jqueryui/black-tie/jquery-ui-1.8.16.custom.css" />
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/slick.css">
+<!-- 반응형 슬라이드 -->
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/lib.css" />
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/common.css" />
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/board.css" />
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/buttons.css" />
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/broadcast.css" />
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/user.css" />
+<!-- ++++++++++++ 스킨 사용자/제작자 CSS ++++++++++++ -->
+
+<!-- /CSS -->
+<link rel="stylesheet" type="text/css"
+	href="<%=request.getContextPath()%>/css/javascript/plugin/jquery_swipe/jquery_swipe.css" />
+<!-- 자바스크립트 -->
+<script
+	src="<%=request.getContextPath()%>/css/javascript/jquery/jquery.min.js"></script>
+<script
+	src="<%=request.getContextPath()%>/css/javascript/jquery/jquery-ui.min.js"></script>
+<script
+	src="<%=request.getContextPath()%>/css/javascript/plugin/jquery.poshytip.min.js"></script>
+<script
+	src="<%=request.getContextPath()%>/css/javascript/plugin/jquery.activity-indicator-1.0.0.min.js"></script>
+<script
+	src="<%=request.getContextPath()%>/css/javascript/plugin/jquery.cookie.js"></script>
+<script
+	src="<%=request.getContextPath()%>/css/javascript/plugin/jquery.slides.min.js"></script>
+<script
+	src="<%=request.getContextPath()%>/css/javascript/plugin/jquery.placeholder.js"></script>
+<script
+	src="<%=request.getContextPath()%>/css/javascript/plugin/validate/jquery.validate.js"></script>
+<script
+	src="<%=request.getContextPath()%>/css/javascript/plugin/ezmark/js/jquery.ezmark.min.js"></script>
+<script
+	src="<%=request.getContextPath()%>/css/javascript/plugin/custom-select-box.js"></script>
+<script
+	src="<%=request.getContextPath()%>/css/javascript/plugin/custom-mobile-pagination.js"></script>
+<script
+	src="<%=request.getContextPath()%>/css/javascript/plugin/slick/slick.min.js"></script>
+<script
+	src="<%=request.getContextPath()%>/css/javascript/plugin/jquery_swipe/jquery.event.swipe.js"></script>
+<script
+	src="<%=request.getContextPath()%>/css/javascript/plugin/touchSlider/swiper.js"></script>
+
+
+
+<!-- 타이틀 -->
+<div id="layout_body" class="layout_body">
+		<!-- ================= 파트 페이지들 :: START. ================= -->
+
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++
+@@ 상품 상세 @@
+- 파일위치 : [스킨폴더]/goods/view.html
+++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+<style type="text/css">
+@media only screen and (max-width:767px) {
+	/* 플로팅 - BACK/TOP(대쉬보드) */
+	#floating_over .ico_floating_back {bottom:73px !important;}
+	#floating_over .ico_floating_top {bottom:73px !important;}
+	#floating_over .ico_floating_foward {bottom:73px !important;}
+	#floating_over .ico_floating_zoom {bottom:115px !important;}
+}
+</style>
+
+
+<!-- 현재 상품의 카테고리 라인맵( 스킨단에서 html 수정 불가. CSS로만 수정하세요. ) -->
+	<div class="ajaxLineMap search_nav">
+		<a class="home" href="http://responsive-sample30.firstmall.kr/main">홈</a>
+			</div>
+	<script type="text/javascript">
+	$(function() {
+		$('.ajaxLineMap .navi_linemap2').on('click', function() {
+			var catecode = $(this).attr('catecode');
+			var that = $(this).find('.navi_linemap_sub');
+
+			if ( $(that).is(':hidden') ) {
+				if($(that).html()){
+					$('.ajaxLineMap .navi_linemap_sub').hide();
+					$(that).show();
+				}else{
+					$(that).empty();
+					// 데이터 동적 호출
+					$.getJSON('category_depth?code='+catecode, function(data) {
+						$(data).each(function(idx, val){
+							if(val.category_code == catecode){
+								$(that).append('<li class="on"><a href="/goods/catalog?code=' + val.category_code + '">' + val.title + '</a></li>');
+							}else{
+								$(that).append('<li><a href="/goods/catalog?code=' + val.category_code + '">' + val.title + '</a></li>');
+							}
+						});
+						$('.ajaxLineMap .navi_linemap_sub').hide();
+						$(that).show();
+					});
+				}
+			} else {
+				$(that).hide();
+			}
+		});
+	});
+	</script>
+
+
+<!-- 타이틀 -->
+<div class="detail_title_area">
+	<h3 class="name"><%=dto.getItem_name() %></h3>
+	<p class="summary">
+		<%=dto.getItem_info() %>
+		<span class="detail_icons">
+			<img src="http://responsive-sample30.firstmall.kr/data/icon/goods/16.gif" alt="">
+			<img src="http://responsive-sample30.firstmall.kr/data/icon/goods/17.gif" alt="">
+		</span>
+	</p>
+	<p class="seq_num Hide">상품번호 : 49</p>
+</div>
+
+<div id="goods_view">
+	<div class="goods_thumbs_spec">
+		<!-- ++++++++++++++++++++++++ 상품 이미지 ++++++++++++++++++++++++ -->
+		<style>
+			#goods_thumbs { width:600px; }
+		</style>
+		<div id="goods_thumbs">
+			<div class="slides_container hide" style="position:relative;">
+					<div class="viewImgWrap">
+							<img src="<%=request.getContextPath()%>/images/goods/goods<%=itemno %>.png" onerror="this.src='http://responsive-sample30.firstmall.kr/data/skin/responsive_camping_healing_gl/images/common/noimage_wide.gif'" title="" />
+					</div>
+					<div class="viewImgWrap">
+							<img src="<%=request.getContextPath()%>/images/goods/goods<%=itemno %>_sub.png" onerror="this.src='http://responsive-sample30.firstmall.kr/data/skin/responsive_camping_healing_gl/images/common/noimage_wide.gif'" title="" />
+					</div>
+				<a id="btn_zoom_view" href="javascript:popup('zoom?no=49&popup=1',817, document.body.clientHeight,'yes')">확대 보기</a>
+			</div>
+
+			<div class="pagination_wrap">
+				<div class="count">
+					<a href="javascript:void(0)" class="prev" title="이전"></a>
+					<div class="pagination_area">
+						<ul class="pagination">
+							<li><a href="javascript:void(0)"><img src="<%=request.getContextPath()%>/images/goods/goods<%=itemno%>.png" width="100" onerror="this.src='http://responsive-sample30.firstmall.kr/data/skin/responsive_camping_healing_gl/images/common/noimage_list.gif'"  /></a></li>
+							<li><a href="javascript:void(0)"><img src="<%=request.getContextPath()%>/images/goods/goods<%=itemno%>_sub.png" width="100" onerror="this.src='http://responsive-sample30.firstmall.kr/data/skin/responsive_camping_healing_gl/images/common/noimage_list.gif'"  /></a></li>
+						</ul>
+					</div>
+					<a href="javascript:void(0)" class="next" title="다음"></a>
+				</div>
+			</div>
+			<script type="text/javascript">
+				//$("#goods_thumbs .pagination").hide().width('540').show();
+				var setGoodsThumbsPaginationScroll = function(){
+					var paginationWidth = $("#goods_thumbs .pagination").width();
+					var currentWidth = $("#goods_thumbs .pagination>li.current").outerWidth();
+					var currentLeft = $("#goods_thumbs .pagination>li.current").position().left;
+
+					var gap = ($("#goods_thumbs .pagination").scrollLeft()+currentLeft+(currentWidth/2))-(paginationWidth/2);
+
+					$("#goods_thumbs .pagination").stop(true,true).animate({'scrollLeft':gap});
+				};
+				$("#goods_thumbs .slides_container>.viewImgWrap:gt(0)").hide();
+				$("#goods_thumbs .pagination>li:eq(0)").addClass('current');
+				$("#goods_thumbs .slides_container").show();
+				$("#goods_thumbs .pagination>li").bind('click',function(){
+					var i = $("#goods_thumbs .pagination>li").index(this);
+					$("#goods_thumbs .slides_container>.viewImgWrap").hide().eq(i).show();
+					$("#goods_thumbs .pagination>li").removeClass('current').eq(i).addClass('current');
+					setGoodsThumbsPaginationScroll();
+					return false;
+				});
+				$("#goods_thumbs .prev").bind('click',function(){
+					var i = $("#goods_thumbs .slides_container>.viewImgWrap").index($("#goods_thumbs .slides_container>.viewImgWrap:visible"));
+					if(i<=0) i = $("#goods_thumbs .slides_container>.viewImgWrap").length-1;
+					else i--;
+					$("#goods_thumbs .slides_container>.viewImgWrap").hide().eq(i).show();
+					$("#goods_thumbs .pagination>li").removeClass('current').eq(i).addClass('current');
+					setGoodsThumbsPaginationScroll();
+					return false;
+				});
+				$("#goods_thumbs .next").bind('click',function(){
+					var i = $("#goods_thumbs .slides_container>.viewImgWrap").index($("#goods_thumbs .slides_container>.viewImgWrap:visible"));
+					if(i>=$("#goods_thumbs .slides_container>.viewImgWrap").length-1) i = 0;
+					else i++;
+					$("#goods_thumbs .slides_container>.viewImgWrap").hide().eq(i).show();
+					$("#goods_thumbs .pagination>li").removeClass('current').eq(i).addClass('current');
+					setGoodsThumbsPaginationScroll();
+					return false;
+				});
+			</script>
+		</div>
+
+
+		<!-- ++++++++++++++++++++++++ 상품 스펙 ++++++++++++++++++++++++ -->
+		<div id="goods_spec">
+		<form name="goodsForm" method="post" enctype="multipart/form-data" action="http://responsive-sample30.firstmall.kr/order/add" target="actionFrame">
+		<input type="hidden" name="goodsSeq" value="49" />
+
+
+			<ul class="goods_spec_sections">
+
+				<!-- ~~~~~ 가격, 할인율, 할인내역 ~~~~~ -->
+				<li class="deatil_price_area">
+						<div class="deatil_sale_rate">
+							<p class="inner">
+								<span class="num">29</span>%
+							</p>
+						</div>
+						<p class="org_price">
+							<span class="dst_th_size"><s><span class="num">90,000</span></s>&#x20a9;</span>
+						</p>
+						<p class="sale_price">
+								<span class="num"><%=dto.getItem_price() %></span><span class='price_won'>&#x20a9;</span>
+						</p>
+
+				</li>
+			
+				<li class="goods_spec_saving_benefit">
+					<ul class="detail_spec_table">
+						<li class="th"><span designElement="text" textIndex="44"  textTemplatePath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvZ29vZHMvdmlldy5odG1s" >적립혜택</span></li>
+						<li>
+							<span designElement="text" textIndex="45"  textTemplatePath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvZ29vZHMvdmlldy5odG1s" >구매</span>
+							320&#x20a9;
+
+						</li>
+					</ul>
+					<div id="reviewDetail" class="detail_option_list hide">
+						<ul>
+						</ul>
+					</div>
+				</li>
+				<!-- ~~~~~ //적립혜택 ~~~~~ -->
+
+				<!-- ~~~~~ 네이버 마일리지 ~~~~~ -->
+				<!-- ~~~~~ //네이버 마일리지 ~~~~~ -->
+
+				<!-- ~~~~~ 배송 ~~~~~ -->
+				<!-- ~~~~~ //배송 ~~~~~ -->
+
+				<!-- ~~~~~ 해외배송 ~~~~~ -->
+				<!-- ~~~~~ //해외배송 ~~~~~ -->
+
+				<!-- ~~~~~ 상품정보 ~~~~~ -->
+				<li class="goods_spec_sub_info">
+					<ul class="detail_spec_table">
+						<li class="th"><span designElement="text" textIndex="75"  textTemplatePath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvZ29vZHMvdmlldy5odG1s" >상품정보</span></li>
+						<li><span class="gray_06" designElement="text" textIndex="76"  textTemplatePath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvZ29vZHMvdmlldy5odG1s" >우측 '자세히' 참조</span></li>
+						<li class="btn_area1">
+						</li>
+					</ul>
+				</li>
+				<!-- ~~~~~ //상품정보 ~~~~~ -->
+				<!-- ~~~~~ 브랜드 ~~~~~ -->
+				<li class="goods_spec_brand">
+					<ul class="detail_spec_table">
+						<li class="th"><span designElement="text" textIndex="81"  textTemplatePath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvZ29vZHMvdmlldy5odG1s" >브랜드</span></li>
+						<li>
+							<a href="<%=request.getContextPath() %>/index.jsp?workgroup=board&work=board_list">LG</a>
+						</li>
+					</ul>
+				</li>
+				<!-- ~~~~~ //브랜드 ~~~~~ -->
+			</ul>
+
+			<!-- ~~~~~~~~~~~ 구매하기 열기 섹션( 모바일 전용 ) ~~~~~~~~~~~ -->
+			<div id="goodsBuyOpenSection" class="goods_buy_open_sections">
+				<a href="javascript:void(0);" id="btnSectionOpen" class="btn_section_open off">열기</a>
+				<ul class="goods_buttons_section">
+					<li>
+						<ul class="basic_btn_area">
+							<li><button type="button" id="buy_btn" class="btn_resp size_c color2"><span designElement="text" textIndex="99"  textTemplatePath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvZ29vZHMvdmlldy5odG1s" >구매하기</span></button></li>
+						</ul>
+					</li>
+
+				</ul>
+			</div>
+			<!-- ~~~~~~~~~~~ 구매하기 ~~~~~~~~~~~ -->
+			<div id="goodsOptionBuySection" class="goods_buy_sections">
+				<a href="javascript:void(0);" id="btnSectionClose" class="btn_section_close">닫기</a>
+
+				<div class="goods_option_select_area">
+				<!-- 상품 옵션 인클루드. 파일위치 : [스킨폴더]/goods/_select_options.html -->
+<!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++
+@@ 상품 옵션 @@
+- 파일위치 : [스킨폴더]/goods/_select_options.html
+++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+<script type="text/javascript">
+// 기존 option size 저장
+var old_height = $('.goods_option_select_area').height();
+$(document).ready(function(){
+	gl_option_select_ver	= $("input[name='gl_option_select_ver']").val();
+
+	var optObj			= new jscls_option_select();
+	optObj.set_init('1',
+					'49',
+					'64000',
+					'',
+					'responsive_camping_healing_gl',
+					true,
+					'1',
+					'0',
+					'',
+					'',
+					'divide',
+					'',
+					'',
+					'',
+					'',
+					'KRW', 
+					'&#x20a9;', 
+					'after',
+					'');
+
+
+
+	policyList = new Array();
+
+
+	optObj.set_cutting_sale_price('0.001', 'dscending');
+
+
+
+	// callback 함수 셋팅 :: 2016-02-04 lwh
+	optObj.set_selectbox_option('sbHolderOpen', 'sbHolderClose');
+
+	optObj.set_bind_option();
+	apply_input_style();
+});
+
+// 옵션 선택시 슬라이드 옵션창 재조정 :: 2019-02-07 lwh
+function sbHolderOpen(inst){
+	if ( window.innerWidth < 768 ) {
+		if ( old_height == 0 ) {
+			old_height = $('#select_option_lay .goods_option_area').height();
+		}
+		var opScrollHeight = $('#select_option_lay .goods_option_area').height();
+		var selectOptionHeight = $('#select_option_lay').find('.sbOptions:visible').height();
+		if ( selectOptionHeight > opScrollHeight - 77 ) {
+			$('#select_option_lay .goods_option_area').css( 'min-height', opScrollHeight + selectOptionHeight + 22 + 'px' );
+			$('#select_option_lay').find('.sbOptions').css( 'max-height', 'none' );
+		}
+	}
+}
+function sbHolderClose(inst){
+	// 선택된 옵션이 있는지 체크
+	if ( window.innerWidth < 768 ) {
+		if($(".goods_quantity_table_container").css('display') != 'block'){
+			$('#select_option_lay .goods_option_area').css( 'min-height', '0' );
+		}
+	}
+}
+</script>
+
+<div id="select_option_lay">
+	<input type="hidden" name="option_select_goods_seq" value="49" />
+	<input type="hidden" name="option_select_provider_seq" value="1" />
+	<input type="hidden" name="gl_option_select_ver" value="0.1" />
+	<input type="hidden" name="use_add_action_button" value="n" />
+
+	<div class="goods_option_area">
+		<table class="goods_option_table" width="100%" cellpadding="0" cellspacing="0" border="0">
+		<colgroup>
+			<col />
+			<col width="15" />
+		</colgroup>
+
+			<!-- 필수옵션 시작 -->
+		<tr>
+			<th colspan="2"><span designElement="text" textIndex="1"  textTemplatePath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvZ29vZHMvX3NlbGVjdF9vcHRpb25zLmh0bWw=" >상품옵션</span></th>
+		</tr>
+		<tr class="optionTr">
+			<td colspan="2">
+				<span class="optionTitle hide">색상</span>
+				<select name="viewOptions[]" id="0" opttype="color">
+					<option value="">- 색상 선택 -</option>
+					<option value="브라운" price="64000.00" consumer_price="90000.00" opt1="브라운" opt2="" opt3="" opt4="" opt5="" infomation="" class="" seq="0">브라운</option>
+					<option value="라이트브라운" price="64000.00" consumer_price="90000.00" opt1="라이트브라운" opt2="" opt3="" opt4="" opt5="" infomation="" class="" seq="1">라이트브라운</option>
+					<option value="살구색" price="64000.00" consumer_price="90000.00" opt1="살구색" opt2="" opt3="" opt4="" opt5="" infomation="" class="" seq="2">살구색</option>
+					<option value="화이트" price="64000.00" consumer_price="90000.00" opt1="화이트" opt2="" opt3="" opt4="" opt5="" infomation="" class="" seq="3">화이트</option>
+				</select>
+				<div class="viewOptionsspecialays color">
+					<span class="#6b4d32"><span name="viewOptionsspecialbtn" class="viewOptionsspecialbtn hand bbs_btn #6b4d32"  style="color:#6b4d32;"  value="브라운"  optvalue="브라운" price="64000.00" opt1="브라운" opt2="" opt3="" opt4="" opt5="" infomation=""  eqindex='0'><font style="background-color:#6b4d32;">■</font></span></span>
+					<span class="#b89f88"><span name="viewOptionsspecialbtn" class="viewOptionsspecialbtn hand bbs_btn #b89f88"  style="color:#b89f88;"  value="라이트브라운"  optvalue="라이트브라운" price="64000.00" opt1="라이트브라운" opt2="" opt3="" opt4="" opt5="" infomation=""  eqindex='0'><font style="background-color:#b89f88;">■</font></span></span>
+					<span class="#ebd8c1"><span name="viewOptionsspecialbtn" class="viewOptionsspecialbtn hand bbs_btn #ebd8c1"  style="color:#ebd8c1;"  value="살구색"  optvalue="살구색" price="64000.00" opt1="살구색" opt2="" opt3="" opt4="" opt5="" infomation=""  eqindex='0'><font style="background-color:#ebd8c1;">■</font></span></span>
+					<span class="#fff"><span name="viewOptionsspecialbtn" class="viewOptionsspecialbtn hand bbs_btn #fff"  style="color:#fff;"  value="화이트"  optvalue="화이트" price="64000.00" opt1="화이트" opt2="" opt3="" opt4="" opt5="" infomation=""  eqindex='0'><font style="background-color:#fff;">■</font></span></span>
+				</div>
+			</td>
+		</tr>
+		<tr id="viewoptionsInfoTr" class="hide">
+			<td id="viewOptionsInfo" class="center" colspan="2"></td>
+		</tr>
+			<!-- 필수옵션 끝 -->
+
+
+		</table>
+		<!-- 옵션 선택 영역 끝 -->
+	</div>
+</div>
+				<!-- //상품 옵션 인클루드 -->
+				</div>
+
+				<!-- 총 상품 금액 표기 시작-->
+				<div class="goods_price_area">
+					<table width="100%" cellpadding="0" cellspacing="0" border="0">
+					<tr>
+						<!-- 단일옵션일 경우 수량 -->
+						<td class="total_goods_price">
+							<span class="total_goods_tit" designElement="text" textIndex="106"  textTemplatePath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvZ29vZHMvdmlldy5odG1s" >총 상품금액</span>
+							<span id="total_goods_price">64,000</span> &#x20a9;
+						</td>
+					</tr>
+					</table>
+				</div>
+				<!-- 총 상품 금액 표기 끝-->
+
+				<div class="goods_buttons_area">
+					<ul class="goods_buttons_section">
+						<li>
+							<ul class="basic_btn_area">
+								<li><button type="button" name="addCart" id="addCart" onclick="goCart(<%=itemno%>);" class="btn_resp size_extra2 NpayNo"><span designElement="text" textIndex="107"  textTemplatePath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvZ29vZHMvdmlldy5odG1s" >장바구니</span></button></li>
+								<li><button type="button" id="buy" class="btn_resp size_extra2 color2 NpayNo"><span designElement="text" textIndex="109"  textTemplatePath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvZ29vZHMvdmlldy5odG1s" >구매하기</span></button></li>
+							</ul>
+						</li>
+					</ul>
+
+
+				</div>
+			</div>
+
+
+			<!-- 오프라인 쿠폰 -->
+			<!-- //오프라인 쿠폰 -->
+
+		</form>
+		</div>
+		<!-- ++++++++++++++++++++++++ //상품 스펙 ++++++++++++++++++++++++ -->
+	</div>
+
+</div>
+		<!-- ================= 파트 페이지들 :: END. ================= -->
+		</div>
+
+<%--장바구니로 보내기! --%>
+<script type="text/javascript">
+	function goCart(itemno){
+		if(itemno==null){
+			location.href="<%=request.getContextPath()%>/index.jsp?workgroup=member&work=login";
+		}else{
+			
+			location.href="<%=request.getContextPath()%>/index.jsp?workgroup=order&work=cart&itemno="+itemno;
+		}
+	}
+	
+</script>
+<script type="text/javascript">
+	$(function() {
+		/* 반응형 슬라이드 배너 관련( 절대 삭제 금지 ) */
+			$('.slider_before_loading').removeClass('slider_before_loading');
+
+		// 상품 색상 코드값 디자인( new 상품정보 )
+		if ( $('.displaY_color_option').length > 0 ) {
+			$('.displaY_color_option .areA').filter(function() {
+				return ( $(this).css('background-color') == 'rgb(255, 255, 255)' );
+			}).addClass('border');
+		}
+
+		$( window ).on('resize', function() {
+			if ( window.innerWidth != WINDOWWIDTH ) {
+				setTimeout(function(){ WINDOWWIDTH = window.innerWidth; }, 10);
+			}
+		});
+	});
+
+	/*######################## 17.12.19 gcs yjy : 앱 처리(fb 로그아웃) s */
+	function logoutfb(){
+		FB.getLoginStatus(logoutfb_process);
+	}
+	function logoutfb_process(){
+		FB.api('/me', function(response) {
+
+			FB.logout(function(response) {
+
+			});
+
+			isLogin = false;
+			if (fbId != "")  initializeFbTokenValues();
+			if (fbUid != "") initializeFbUserValues();
+
+			return false;
+		});
+	}
+	/*######################## 17.12.19 gcs yjy : 앱 처리(fb 로그아웃) e */
+</script>
+

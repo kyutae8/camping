@@ -1,0 +1,355 @@
+<%@page import="site.semi.dao.SproductDAO"%>
+<%@page import="site.semi.dto.SproductDTO"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%
+
+	int num=Integer.parseInt(request.getParameter("num"));
+
+	SproductDTO sproduct=SproductDAO.getDAO().selectNumSproduct(num);
+%>   
+
+
+<div class="subpage_wrap">
+	<div class="subpage_container v3 Pb10">
+		<!-- 타이틀 -->
+		<div class="title_container Pb0">
+			<h2><span designelement="text" textindex="1" texttemplatepath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvb3JkZXIvc2V0dGxlLmh0bWw=">주문/결제</span></h2>
+		</div>
+	</div>
+</div>
+
+
+<div id="orderPaymentLayout" class="subpage_wrap order_payment" data-ezmark="undo">
+	<div class="subpage_container v2 Pt0 order_payment_left">
+		<!-- 주문상품 :: START -->
+		<h2 class="title_od1 Pt15"><span designelement="text" textindex="2" texttemplatepath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvb3JkZXIvc2V0dGxlLmh0bWw=">주문상품 정보</span></h2>
+		<div class="cart_contents">
+			<div class="cart_list">
+				<ul class="shipping_group_list ">
+					<li class="goods_delivery_info clearbox" style="display: list-item;">
+						<ul class="detail">
+							<li class="th">무료배송</li>
+							
+						
+						</ul>
+					</li>
+
+
+					<li class="cart_goods">
+						<div class="cart_goods_detail">
+
+							<div class="cgd_contents">
+								<div class="block block1">
+									<ul>
+										<li class="img_area"></li>
+										<li class="option_area">
+
+
+											<div class="goods_name v2">
+												<a href="../goods/view?no=48"><%=sproduct.getName() %></a>
+											</div>
+
+
+											<ul class="cart_option">
+												<li><span class="xtle">색상</span> 그레이</li>
+											</ul>
+
+											<input type="hidden" name="coupon_download[43][44]" value="">
+											<input type="hidden" name="shippingcoupon_download[1_1_delivery]" value="">
+											<div class="cart_quantity">
+												<span class="xtle">수량</span>
+												<select name="category" >
+													<option value="1" <% if(sproduct.getCode().split("_")[0].equals("1")) { %> selected="selected" <% } %>>1</option>
+													<option value="2" <% if(sproduct.getCode().split("_")[0].equals("2")) { %> selected="selected" <% } %>>2</option>
+													<option value="3" <% if(sproduct.getCode().split("_")[0].equals("3")) { %> selected="selected" <% } %>>3</option>
+												</select>
+											</div>
+
+
+										</li>
+									</ul>
+								</div>
+
+								<ul class="block block2 x1" id="mobile_cart_sale_tr_44">
+									<li class="price_a">
+										<span class="ptitle">상품금액</span>(<%=sproduct.getPrice() %> * <%=sproduct.getQty() %>)
+									</li>
+									
+									<li class="price_c">
+									</li>
+								</ul>
+							</div>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!-- 주문상품 :: END -->
+
+
+
+		<div class="order_subsection v2">
+
+			<h3 class="title3"><span>배송지 입력</span></h3>
+
+			<!-- 회원관련 배송정보 -->
+			<div class="recipient delivery_info_member" style="display: none;">
+				<!-- 최종 배송지 :: START -->
+				<div class="real_delivery hide">
+					<div class="real_delivery_area">
+					
+					</div>
+				</div>
+	
+			</div>
+
+			<!-- 받는분 정보 입력 란 -->
+			<div class="delivery_selecter delivery_info_input hide" style="display: block;">
+				<ul class="settle_tab delivery_choice clearbox">
+				
+				</ul>
+				<div class="settle_tab_contents tab_box1 delivery_often" style="display: none;"><!-- ++++++++++++++++++++++++++++++++++++++++++++++++++++
+@@ 다른 배송지 목록( 신청/결제 > 배송지 > 다른배송지 선택 > 선택 목록 ) @@
+- 파일위치 : [스킨폴더]/order/pop_delivery_address.html
+++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+
+
+</div>
+				<div class="settle_tab_contents tab_box2 delivery_input" style="display: block;">
+					<ul class="list_01 v2">
+						<!-- 받는분 -->
+						<li class="th"><p >성함</p><input> </li>
+						<li class="td"></li>
+						<li class="th"><p >기본주소</p></li>
+						<li class="td"></li>
+				
+						<li class="th"><p >상세주소</p></li>
+						<li class="td"></li>
+						<!-- 국내 -->
+						<li class="domestic goods_delivery_info " style="display: list-item;">
+							<input type="hidden" name="recipient_input_address_type" value="street" class="hide" title="우편번호" placeholder="우편번호">
+							<input type="text" name="recipient_input_new_zipcode" value="" title="우편번호" class="pilsu size_zip_all" readonly="" required="" placeholder="우편번호">
+							<button type="button" class="btn_resp size_b color4" onclick="openDialogZipcode_resp('morder');">검색</button>
+						</li>
+						<li class="domestic goods_delivery_info " style="display: list-item;">
+							<input type="text" name="recipient_input_address_street" value="" class="pilsu size_address hide" title="도로명 주소" readonly="" placeholder="도로명 주소">
+							<input type="text" name="recipient_input_address" value="" class="pilsu size_address" title="주소" readonly="readonly" placeholder="주소">
+						</li>
+						<li class="domestic goods_delivery_info " style="display: list-item;">
+							<input type="text" name="recipient_input_address_detail" value="" class="pilsu size_address" title="나머지주소" required="" placeholder="나머지주소">
+						</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+
+			<!-- 배송 메세지 -->
+			<div id="shipMessage" class="ship_message">
+				<input type="text" class="ship_message_txt" name="memo" id="memo" value="" title="배송 메세지 입력" autocomplete="off" placeholder="배송 메세지 입력">
+				<ul class="add_message">
+					<li>부재시 경비실에 맡겨 주세요.</li>
+					<li>부재시 전화 주시거나 문자 남겨 주세요.</li>
+					<li>배송 전에 미리 연락해 주세요.</li>
+				</ul>
+			</div>
+			<!-- ++++++++++++++++++++ 배송지 :: END ++++++++++++++++++++ -->
+
+
+
+		
+		</div>
+	</div>
+
+
+	<div class="subpage_container v2 Pt0 order_payment_right">
+		<div class="order_subsection v2 ">
+			<div class="right_flying_wrap1">
+				<div class="right_flying_wrap2">
+					<div class="right_flying_wrap3">
+						<!-- ++++++++++++++++++++ 결제 금액 :: START ++++++++++++++++++++ -->
+						<h3 class="title3 Pt15"><span designelement="text" textindex="6" texttemplatepath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvb3JkZXIvc2V0dGxlLmh0bWw=">결제 금액</span></h3>
+						<div class="order_price_total">
+							<ul>
+								<li class="th"><span class="gray_01 Fs17" designelement="text" textindex="7" texttemplatepath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvb3JkZXIvc2V0dGxlLmh0bWw=">상품금액</span></li>
+								<li class="td"><span id="total_goods_price" class="v2 gray_01">66,000</span>₩</li>
+							</ul>
+							<ul>
+								<li class="th">
+									<span designelement="text" textindex="8" texttemplatepath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvb3JkZXIvc2V0dGxlLmh0bWw=">배송비</span>&nbsp;
+								</li>
+								<li class="td">
+									() <span class="total_delivery_shipping_price">무료</span>₩
+								</li>
+							</ul>
+							
+						</div>
+
+						
+						<!-- ++++++++++++++++++++ 결제 금액 :: END ++++++++++++++++++++ -->
+
+
+						<!-- ++++++++++++++++++++ 결제 수단 :: START ++++++++++++++++++++ -->
+						<h3 class="title3"><span designelement="text" textindex="17" texttemplatepath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvb3JkZXIvc2V0dGxlLmh0bWw=">결제 수단</span></h3>
+						<ul class="payment_method_select clearbox" id="payment_type">
+
+							<li>
+								<div class="card">
+									<label><input type="radio" name="payment" value="card" checked="checked"></label>
+								</div>
+								<p designelement="text" textindex="20" texttemplatepath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvb3JkZXIvc2V0dGxlLmh0bWw=">신용카드</p>
+							</li>
+							<li>
+								<div class="account">
+									<label><input type="radio" name="payment" value="account"></label>
+								</div>
+								<p designelement="text" textindex="21" texttemplatepath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvb3JkZXIvc2V0dGxlLmh0bWw=">실시간<br>계좌이체</p>
+							</li>
+							<li>
+								<div class="escrow_account">
+									<label><input type="radio" name="payment" value="escrow_account"></label>
+								</div>
+								<p designelement="text" textindex="22" texttemplatepath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvb3JkZXIvc2V0dGxlLmh0bWw=">실시간<br>계좌이체<br><span class="desc No">(에스크로)</span></p>
+							</li>
+							<li>
+								<div class="virtual active">
+									<label><input type="radio" name="payment" value="virtual"></label>
+								</div>
+								<p designelement="text" textindex="23" texttemplatepath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvb3JkZXIvc2V0dGxlLmh0bWw=">가상계좌</p>
+							</li>
+							<li>
+								<div class="escrow_virtual">
+									<label><input type="radio" name="payment" value="escrow_virtual"></label>
+								</div>
+								<p designelement="text" textindex="24" texttemplatepath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvb3JkZXIvc2V0dGxlLmh0bWw=">가상계좌<br><span class="desc No">(에스크로)</span></p>
+							</li>
+							<li>
+								<div class="cellphonepay">
+									<label><input type="radio" name="payment" value="cellphone"></label>
+								</div>
+								<p designelement="text" textindex="25" texttemplatepath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvb3JkZXIvc2V0dGxlLmh0bWw=">휴대폰결제</p>
+							</li>
+							<li>
+								<div class="bank2">
+									<label><input type="radio" name="payment" value="bank"></label>
+								</div>
+								<p designelement="text" textindex="26" texttemplatepath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvb3JkZXIvc2V0dGxlLmh0bWw=">무통장입금</p>
+							</li>
+							<li>
+								<div class="paypal">
+									<label><input type="radio" name="payment" value="paypal"></label>
+								</div>
+								<p designelement="text" textindex="27" texttemplatepath="cmVzcG9uc2l2ZV9jYW1waW5nX2hlYWxpbmdfZ2wvb3JkZXIvc2V0dGxlLmh0bWw=">Paypal</p>
+							</li>
+
+							<!-- 참고) npay : class="npay", payco : class="payco" -->
+						</ul>
+
+						<ul class="payment_method_select hide" id="payment_type_zero" style="display: none;">
+							<li><strong style="color:#4b4b4b;">전액할인</strong></li>
+						</ul>
+
+						<!-- 카카오페이 - 상세 -->
+
+						<!-- 신용카드 - 상세 -->
+						<div id="typereceiptcardlay" class="hide" style="display: none;">
+							카드매출전표(또는 휴대폰결제전표)로 대체합니다.
+						</div>
+
+						<!--무통장입금 - 상세 -->
+						<ul class="list_01 v2 bank hide" style="display: none;">
+							<li>
+								<input type="text" name="depositor" value="" title="입금자명" placeholder="입금자명">
+							</li>
+							<li>
+								<select name="bank">
+									<option value="">은행 선택</option>
+									<option value="국민은행 000000-00-000000 예금주:김대표">국민은행 000000-00-000000 예금주:김대표</option>
+									<option value="신한은행 000-000-000000 예금주:김대표">신한은행 000-000-000000 예금주:김대표</option>
+								</select>
+							</li>
+						</ul>
+						<ul id="typereceiptlay" class="mt_sp1 hide" style="display: block;">
+							<li class="labelgroup_design ">
+								<label for="typereceiptuse1"><input type="radio" name="typereceiptuse" id="typereceiptuse1" value="1"> 발급</label>
+								<label for="typereceiptuse0" class="on"><input type="radio" name="typereceiptuse" id="typereceiptuse0" value="0" checked="checked"> 발급 안 함</label>					
+							</li>
+							<li class="hide labelgroup_design" id="typereceiptchoice">
+								<label class="cach_voucherchk on"><input type="radio" name="typereceipt" id="typereceipt2" value="2"> 현금영수증 </label>
+								<label class="tax_voucherchk"><input type="radio" name="typereceipt" id="typereceipt1" value="1"> 세금계산서 </label>
+							</li>
+						</ul>
+						<div id="typereceipttablelay" class="hide" style="display: block;">
+
+							<!-- ~~~~~~~ 현금영수증 신청 부분 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+							<ul id="cash_container" class="typereceiptlay list_01 v2 Mt5 hide">
+								<li class="labelgroup_design">
+									<label for="cuse0" class="on"><input type="radio" name="cuse" id="cuse0" value="0" checked="checked"> 개인 소득공제</label>
+									<label for="cuse1"><input type="radio" name="cuse" id="cuse1" value="1"> 사업자 지출증빙</label>
+								</li>
+								<li id="personallay">
+								  <input type="tel" name="creceipt_number[0]" class="size_email_full" maxlength="13" title="휴대폰번호( '-' 없이 입력 )" placeholder="휴대폰번호( '-' 없이 입력 )">
+								</li>
+								<li id="businesslay" class="hide">
+								  <input type="tel" name="creceipt_number[1]" class="size_email_full" maxlength="10" title="사업자번호( '-' 없이 입력 )" placeholder="사업자번호( '-' 없이 입력 )">
+								</li>
+								<li id="personallay">
+								  <input type="email" name="sales_email" class="size_email_full" title="이메일주소" placeholder="이메일주소">
+								</li>
+								<li id="duplicate_message" class="desc">
+									※ 결제창에서 다시 현금영수증을 신청하지 마세요. 중복발행 됩니다.
+								</li>
+							</ul>
+							<!-- ~~~~~~~ 세금계산서 신청 부분 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+							<ul id="tax_container" class="typereceiptlay list_01 v2 Mt10 hide">
+								<li>
+									<input type="text" name="co_name" id="co_name" value="" title="상호명" placeholder="상호명">
+								</li>
+								<li>
+									<input type="tel" name="busi_no" id="busi_no" value="" title="사업자번호" placeholder="사업자번호"> <span class="desc">ex) 123-12-12345</span>
+								</li>
+								<li>
+									<input type="text" name="co_ceo" id="co_ceo" value="" title="대표자명" placeholder="대표자명">
+								</li>
+								<li>
+									<input type="text" name="co_status" id="co_status" value="" title="업태" style="width:130px;" placeholder="업태"> /
+									<input type="text" name="co_type" id="co_type" value="" title="업종" style="width:130px;" placeholder="업종">
+								</li>
+								<li>
+									<input type="text" name="co_new_zipcode" class="size_zip_all" value="" title="우편번호" readonly="" placeholder="우편번호">
+									<button type="button" class="btn_resp size_b color4" onclick="openDialogZipcode_resp('co_');">검색</button>
+									<input type="hidden" name="co_address_type" id="co_address_type" value="" title="주소" placeholder="주소">
+									<input type="text" name="co_address" id="co_address" value="" class="size_address Mt5 " title="주소" readonly="" placeholder="주소">
+									<input type="text" name="co_address_street" id="co_address_street" value="" class="size_address Mt5 hide" title="주소" readonly="" placeholder="주소">
+									<input type="text" name="co_address_detail" id="co_address_detail" value="" class="size_address Mt5" title="상세주소" placeholder="상세주소">
+								</li>
+								<li>
+									<input type="text" name="person" id="person" value="" title="담당자명" placeholder="담당자명">
+								</li>
+								<li>
+									<input type="email" name="email" id="email" value="qkrthdus0711@naver.com" title="이메일주소" class="size_email_full" placeholder="이메일주소">
+								</li>
+								<li>
+									<input type="tel" name="phone" id="phone" value="" title="연락처 " placeholder="연락처 "> <span class="desc">숫자만 입력</span>
+								</li>
+							</ul>
+						</div>
+						<!-- ++++++++++++++++++++ 결제 수단 :: END ++++++++++++++++++++ -->
+
+						<!-- ++++++++++++++++++++ 약관 동의( 비회원 ) :: START ++++++++++++++++++++ -->
+						<!-- ++++++++++++++++++++ 약관 동의( 비회원 ) :: END ++++++++++++++++++++ -->
+
+						<!-- 결제 버튼 -->
+						<div class="pay_layer btn_area_c" id="pay_layer1">
+							<input type="button" value="결제하기" name="button_pay" id="pay" class="btn_resp size_extra color2 Wmax">
+							<span class="hide"><input type="button" value="장바구니로" class="btn_resp size_extra" onclick="document.location.href='cart';"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>

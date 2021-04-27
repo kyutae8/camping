@@ -1,0 +1,66 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
+<!-- 슬라이드 배너 영역  (light_style_2_11) :: START -->
+	<div class="wide_visual_slider sliderB center">
+		<!-- 슬라이드 배너 데이터 영역 :: START -->
+		<div class="light_style_2_11 designBanner">
+			<div class="sslide">
+				<img class="simg"
+					src="<%=request.getContextPath() %>/images/images_1.jpg" />
+				<div class="slide_contents">
+					<div class="wrap1">
+						<div class="wrap2">
+							<ul class="text_wrap">
+								<li class="text1">도심에서 벗어나 자연이 선사하는 고요함<br>지금은 라이프밸런스 할 시간</li>
+								<li class="sbtns1"><a></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="sslide">
+				<img class="simg"
+					src="<%=request.getContextPath() %>/images/images_2.jpg" />
+				<div class="slide_contents">
+					<div class="wrap1">
+						<div class="wrap2">
+							<ul class="text_wrap">
+								<li class="text1">미니멀리스트들을 위한<br> 맞춤형 초경량 미니멀 그레이텐트</li>
+								<li class="sbtns1"><a></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="sslide">
+				<img class="simg"
+					src="<%=request.getContextPath() %>/images/images_3.jpg" />
+				<div class="slide_contents">
+					<div class="wrap1">
+						<div class="wrap2">
+							<ul class="text_wrap">
+								<li class="text1">바로 이 순간, 또 다른 추억<br> 당신의 여행엔 언제나 라이프밸런스</li>
+								<li class="sbtns1"><a></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 슬라이드 배너 데이터 영역 :: END -->
+	</div>
+	<script type="text/javascript">
+		$(function() {
+			$(".light_style_2_11").not(".slick-initialized").slick({
+				// $('.light_style_타입num_배너num')에서 '배너num'는 showDesignBanner(배너num)과 반드시 일치해야 합니다
+				dots : true, // 도트 페이징 사용( true 혹은 false )
+				autoplay : true, // 슬라이드 자동( true 혹은 false )
+				speed : 1000, // 슬라이딩 모션 속도 ms( 밀리세컨드, ex. 600 == 0.6초 )
+				fade : true, // 슬라이딩 fade 모션 사용( true 혹은 fasle )
+				autoplaySpeed : 3000, // autoplay 사용시 슬라이드간 시간 ms( 밀리세컨드, ex. 3000 == 3초 )
+			// 이 외 slick 슬라이더의 자세한 옵션사항은 http://kenwheeler.github.io/slick/ 참고
+			});
+		});
+	</script>
+	<!-- 슬라이드 배너 영역 (light_style_2_11) :: END -->

@@ -1,0 +1,106 @@
+package site.semi.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+
+import site.semi.dto.SaleCartDTO;
+import site.semi.dto.ScartDTO;
+import site.semi.dto.SproductDTO;
+
+public class ScartDAO extends JdbcDAO {
+
+	private static ScartDAO _dao;
+	private ScartDAO() {
+		
+	}
+	static {
+		_dao = new ScartDAO();
+	}
+	public static ScartDAO getDAO() {
+		return _dao;
+	}
+	public int insertScart(ScartDTO scart) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		int row = 0;
+		try {
+			con = getConnection();
+			String sql = "insert into scart values(seq.nextval,?,?,?,?,?,?,?,?)";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1,scart.getScart_num());
+			pstmt.setInt(2,scart.getNum());
+			pstmt.setInt(3,scart.getQty());
+			pstmt.setInt(4,scart.getPrice());
+			pstmt.setInt(5,scart.getTotal_price());
+			pstmt.setString(6,scart.getId());
+			pstmt.setString(7,scart.getName());
+			pstmt.setString(8,scart.getColor());
+			pstmt.setString(9,scart.getImage());
+			
+			row = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally {
+			close(con, pstmt);
+		}
+		return row;
+	}
+	public List<ScartDTO> selectAllScart(int num){
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		List<ScartDTO>  list = new ArrayList<ScartDTO>();
+		try {
+			con = getConnection();
+			String sql = "select * from scart where num=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1,num);
+			rs = pstmt.executeQuery();
+			while (rs.next()) {
+			ScartDTO scart = new ScartDTO();
+			scart.setScart_num(rs.getInt(1));
+			scart.setNum(rs.getInt(2));
+			scart.setQty(rs.getInt(3));
+			scart.setPrice(rs.getInt(4));
+			scart.setTotal_price(rs.getInt(5));
+			scart.setId(rs.getString(6));
+			scart.setName(rs.getString(7));
+			scart.setColor(rs.getString(8));
+			scart.setImage(rs.getString(9));
+			list.add(scart);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		finally {
+			close(con, pstmt, rs);
+		}
+		return list;
+	}
+	public int deleteScart(int scart_num) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		int row =0;
+		try {
+			con = getConnection();
+			String sql = "delete from scart where scart_num=?";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setInt(1,scart_num);
+			row = pstmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			close(con, pstmt);
+		}
+		return row;
+	}
+	
+}

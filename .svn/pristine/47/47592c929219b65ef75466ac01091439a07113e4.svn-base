@@ -1,0 +1,196 @@
+@charset "utf-8";
+
+/*******************************************
+Author : 퍼스트몰(firstmall)
+Author URL : http://www.firstmall.kr
+Creation Date : 2016-06-01
+Modify Date : 2017-07-31
+*******************************************/
+
+#buttons {padding:50px; text-align:center}
+
+/* 버튼 설정*/
+/*
+.btn,
+.btn input ,
+.btn a ,
+.btn button {display:inline-block; overflow:visible; position:relative; margin:0; padding:0; border:0; background:url('../images/common/btnBg.gif') no-repeat; font-size:12px; color:#333 !important; text-decoration:none !important; vertical-align:middle; white-space:nowrap; cursor:pointer}
+.btn-plus button {display:inline-block; width:12px; height:12px; overflow:visible; position:relative; margin:0; padding:0; border:0; background:url('../images/common/icon_plus.gif') no-repeat; cursor:pointer}
+.btn-minus button {display:inline-block; width:12px; height:12px; overflow:visible; position:relative; margin:0; padding:0; border:0; background:url('../images/common/icon_minus.gif') no-repeat; cursor:pointer}
+.btn-plus.gray button {width:28px; height:28px; background:url('../images/common/m_plusbt.png') no-repeat; background-size:28px 28px;}
+.btn-minus.gray button {width:28px; height:28px; background:url('../images/common/m_minusbt.png') no-repeat; background-size:28px 28px;}
+*/
+
+/* 사이즈 설정*/
+/*
+.small {padding-right:1px; background-position:right 0; line-height:15px !important}
+.medium {padding-right:1px; background-position:right -100px;  line-height:18px !important}
+.large {padding-right:1px; background-position:right -200px; height:30px; line-height:30px;  line-height:20px !important}
+*/
+
+/* 디테일*/
+/*
+.small a, .small input, .small button {height:17px; padding:3px 7px 0; background-position:0 0; font-size:11px; line-height:15px; letter-spacing:-1px}
+.medium a, .medium input, .medium button {height:20px; padding:5px 10px 0; background-position:0 -100px; font-size:12px; line-height:18px; font-weight:600; letter-spacing:-1px}
+.large a, .large input, .large button {height:25px; padding:7px 10px 0; background-position:0 -200px; font-size:12px; line-height:20px; font-weight:600; letter-spacing:-1px}
+.small input, .small button {height:20px; padding:0 7px; font-size:11px; line-height:20px}
+.medium input, .medium button {height:25px; padding:0 10px 0 13px; line-height:25px}
+.large input, .large button {height:31px; padding:0 13px; line-height:31px}
+*/
+
+/* 페이지 버튼*/
+/*
+.btn .page {padding:4px 9px 0; font-size:12px !important; font-weight:700; color:#666; letter-spacing:-2px}
+*/
+
+/* 오버시*/
+/*
+.small:hover {background-position:right -50px}
+.medium:hover {background-position:right -150px}
+.large:hover {background-position:right -250px}
+.small:hover a, .small:hover input, .small:hover button {background-position:0 -50px; color:#ff3232}
+.medium:hover a, .medium:hover input, .medium:hover button {background-position:0 -150px; color:#ff3232}
+.large:hover a, .large:hover input, .large:hover button {background-position:0 -250px; color:#ff3232}
+*/
+
+/* 컬러 설정*/
+/*
+.small.black {background-position:right -350px}
+.medium.black {background-position:right -450px}
+.large.black {background-position:right -550px}
+
+.small.black a, .small.black input, .small.black button {background-position:0 -350px; color:#FFF !important}
+.medium.black a, .medium.black input, .medium.black button {background-position:0 -450px; color:#FFF !important}
+.large.black a, .large.black input, .large.black button {background-position:0 -550px; color:#FFF !important}
+.small.black input, .small.black button {color:#FFF !important}
+.medium.black input, .medium.black button {color:#FFF !important}
+.large.black input, .large.black button {color:#FFF !important}
+
+.small.black:hover {background-position:right -400px}
+.medium.black:hover {background-position:right -500px}
+.large.black:hover {background-position:right -600px}
+.small.black:hover a, .small.black:hover input, .small.black:hover button {background-position:0 -400px; color:#DDD !important}
+.medium.black:hover a, .medium.black:hover input, .medium.black:hover button {background-position:0 -500px; color:#DDD !important}
+.large.black:hover a, .large.black:hover input, .large.black:hover button {background-position:0 -600px; color:#DDD !important}
+
+.small.cyanblue {background-position:right -650px}
+.medium.cyanblue {background-position:right -750px}
+.large.cyanblue {background-position:right -850px}
+
+.small.cyanblue a, .small.cyanblue input, .small.cyanblue button {background-position:0 -650px; color:#FFF !important}
+.medium.cyanblue a, .medium.cyanblue input, .medium.cyanblue button {background-position:0 -750px; color:#FFF !important}
+.large.cyanblue a, .large.cyanblue input, .large.cyanblue button {background-position:0 -850px; color:#FFF !important}
+.small.cyanblue input, .small.cyanblue button {color:#FFF !important}
+.medium.cyanblue input, .medium.cyanblue button {color:#FFF !important}
+.large.cyanblue input, .large.cyanblue button {color:#FFF !important}
+
+.small.cyanblue:hover {background-position:right -700px}
+.medium.cyanblue:hover {background-position:right -800px}
+.large.cyanblue:hover {background-position:right -900px}
+.small.cyanblue:hover a, .small.cyanblue:hover input {background-position:0 -700px; color:#EEE}
+.medium.cyanblue:hover a, .medium.cyanblue:hover input {background-position:0 -800px; color:#EEE}
+.large.cyanblue:hover a, .large.cyanblue:hover input {background-position:0 -900px; color:#EEE}
+
+.small.red {background-position:right -950px}
+.medium.red {background-position:right -1050px}
+.large.red {background-position:right -1150px}
+
+.small.red a, .small.red input, .small.red button {background-position:0 -950px; color:#FFF !important}
+.medium.red a, .medium.red input, .medium.red button {background-position:0 -1050px; color:#FFF !important}
+.large.red a, .large.red input, .large.red button {background-position:0 -1150px; color:#FFF !important}
+.small.red input, .small.red button {color:#FFF !important}
+.medium.red input, .small.red button {color:#FFF !important}
+.large.red input, .small.red button {color:#FFF !important}
+
+.small.red:hover {background-position:right -1000px}
+.medium.red:hover {background-position:right -1100px}
+.large.red:hover {background-position:right -1200px}
+.small.red:hover a, .small.red:hover input, .small.red:hover button {background-position:0 -1000px; color:#EEE}
+.medium.red:hover a, .medium.red:hover input, .medium.red:hover button {background-position:0 -1100px; color:#EEE}
+.large.red:hover a, .large.red:hover input, .large.red:hover button {background-position:0 -1200px; color:#EEE}
+
+.btn.grayarrow {padding:0 15px; background-position:right -1240px}
+.btn.grayarrow a, .btn.grayarrow input, .btn.grayarrow button {background-position:0 -1240px; letter-spacing:-1px; height:20px; padding:2px 7px 0; font-size:11px; line-height:20px; color:#333;}
+.btn.grayarrow:hover {background-position:right -1240px}
+.btn.grayarrow:hover a, .btn.grayarrow:hover input, .btn.grayarrow:hover button {background-position:0 -1240px;}
+
+.btn.bluearrow {padding:0 15px; background-position:right -1270px}
+.btn.bluearrow a, .btn.bluearrow input, .btn.bluearrow button {background-position:0 -1270px; letter-spacing:-1px; height:20px; padding:2px 7px 0; font-size:11px; line-height:20px; color:#fff !important}
+.btn.bluearrow:hover {background-position:right -1270px}
+.btn.bluearrow:hover a, .btn.bluearrow:hover input, .btn.bluearrow:hover button {background-position:0 -1270px; color:#eee !important}
+
+.btn.bluegray {padding-right:2px; background-position:right -1300px}
+.btn.bluegray a, .btn.bluegray input, .btn.bluegray button {background-position:0 -1300px; letter-spacing:-1px; height:27px; padding:2px 7px 0; font-size:11px; line-height:25px; color:#fff !important}
+.btn.bluegray:hover {background-position:right -1300px}
+.btn.bluegray:hover a, .btn.bluegray:hover input, .btn.bluegray:hover button {background-position:0 -1300px; color:#eee !important}
+*/
+
+/* 아이콘설정(A태그에만 적용)*/
+/*
+.icon a {vertical-align:middle;}
+.icon-right a {padding-right:5px;}
+.medium .plus {width:20px; height:14px; background-position:0px -300px; vertical-align:middle; margin-top:-3px;}
+.large  .plus {width:20px; height:14px; background-position:0px -300px; vertical-align:middle;}
+.medium .pencle {width:20px; height:14px; background-position:-30px -300px; vertical-align:middle; margin-top:-3px;}
+.large  .pencle {width:20px; height:14px; background-position:-30px -300px; vertical-align:middle;}
+.medium .minus {width:20px; height:14px; background-position:-60px -300px; vertical-align:middle; margin-top:-3px;}
+.large  .minus {width:20px; height:14px; background-position:-60px -300px; vertical-align:middle;}
+.medium .check {width:20px; height:14px; background-position:-90px -300px; vertical-align:middle; margin-top:-3px;}
+.large  .check {width:20px; height:14px; background-position:-90px -300px; vertical-align:middle;}
+.medium .people {width:20px; height:14px; background-position:-120px -300px; vertical-align:middle; margin-top:-3px;}
+.large  .people {width:20px; height:14px; background-position:-120px -300px; vertical-align:middle;}
+.medium .config {width:20px; height:14px; background-position:-150px -300px; vertical-align:middle; margin-top:-3px;}
+.large  .config {width:20px; height:14px; background-position:-150px -300px; vertical-align:middle;}
+.medium .search {width:20px; height:14px; background-position:-180px -300px; vertical-align:middle; margin-top:-3px;}
+.large  .search {width:20px; height:14px; background-position:-180px -300px; vertical-align:middle;}
+.large  .arrowleft {background:url('../images/common/btn_arrow_l.gif') no-repeat; width:15px; height:12px; vertical-align:middle; background-position:0px 1px;}
+.large  .arrowright {background:url('../images/common/btn_arrow_r.gif') no-repeat; width:15px; height:12px; vertical-align:middle; background-position:10px 1px;}
+.small  .checkleft {margin-left:-3px; background:url('../images/common/icon_check.gif') no-repeat; width:13px; height:7px; vertical-align:middle;}
+*/
+
+/* Drop*/
+/*
+.drop {background-position:0 -1240px}
+.drop.hover,
+.drop:hover {background-position:0 -1271px}
+.drop.hover a, .drop.hover input,
+.drop:hover a, .drop:hover input {background-position:right -1271px; color:#fff !important;}
+.drop a, .drop input {height:20px; padding:3px 20px 2px 10px; background-position:right -1240px; font-size:11px; line-height:15px; letter-spacing:-1px; font-weight:normal;}
+.drop a {padding:0px 20px 0px 10px; line-height:20px;}
+*/
+
+/* Drop 확장형(a태그만 사용가능)*/
+/*
+.drop_multi_main {background-position:0 -1240px}
+.drop_multi_main:hover {background-position:0 -1271px}
+.drop_multi_main:hover a {background-position:right -1271px; color:#fff !important;}
+.drop_multi_main a {height:20px; padding:0px 5px 0px 10px; line-height:20px; background:none; font-size:11px; letter-spacing:-1px; font-weight:normal;}
+.drop_multi_sub {background:url('../images/common/select_bg_back.gif') no-repeat; background-position:right 0px}
+.drop_multi_sub:hover {background-position:right -20px}
+.drop_multi_sub:hover a {background-position:right -1271px; color:#fff !important;}
+.drop_multi_sub a {height:20px; padding:0px 20px 0px 0px; line-height:20px; background-position:right -1240px; font-size:11px; line-height:15px; letter-spacing:-1px; font-weight:normal;}
+
+table.mqs-menu {border:0px; border-collapse:collapse;}
+table.mqs-menu td {background-color:#fbfbfb; border:1px solid #dfdfe4; border-bottom:1px solid #c5c7ce;}
+table.mqs-menu td.selected {background-color:#fff; border-bottom:0px;}
+table.mqs-menu td a {display:inline-block; padding:4px 0px; width:135px; text-align:center; color:#9194a1}
+table.mqs-menu td.selected a {font-weight:600; color:#333}
+
+.black_btn {border:0px; background-color:#000; color:#fff; font-size:11px; height:20px; line-height:20px; letter-spacing:-1px; padding:0px 5px; cursor:pointer; vertical-align:middle;}
+.gray_btn {border:0px; background-color:#777; color:#fff; font-size:11px; height:20px; line-height:20px; letter-spacing:-1px; padding:0 5px; cursor:pointer}
+.white_btn {padding:2px 5px 4px; border:1px solid #b0b5bb; border-radius:2px; background-color:#fff; font-size:13px; color:#555;}
+.round_btn {display:inline-block; box-sizing:border-box; background-color:#fff; height:27px; line-height:27px; padding:0px 10px; border:1px solid #bbb; border-radius:2px; font-size:12px; color:#000; white-space:nowrap;}
+.round_gray_btn {display:inline-block; box-sizing:border-box; background-color:#777; height:27px; line-height:27px; padding:0px 10px; border:1px solid #bbb; border-radius:2px; font-size:12px; color:#fff}
+
+.btn_small_normal {display:inline-block; padding:0 5px 0 5px; height:18px; line-height:18px; margin:1px auto; box-sizing:content-box; background-color:#fff; border-radius:3px; border:1px solid #c1c2c5; font-size:12px; color:#61656d;}
+.btn_small_sale {display:inline-block; padding:0 5px 0 5px; height:18px; line-height:18px; margin:1px auto; box-sizing:content-box; border-radius:3px; border:1px solid #c1c2c5; font-size:12px; color:#fff;}
+.btn_small_general {padding:0 13px 0 5px; height:23px; line-height:23px; box-sizing:content-box; background:url('../images/design/ico_arw_go.png') no-repeat; background-size:4px 7px; background-position:calc(100% - 5px) center; background-color:#fff; border-radius:3px; border:1px solid #c1c2c5; font-size:13px; color:#61656d; cursor:pointer}
+.btn_small_point {padding:0 13px 0 5px; height:23px; line-height:23px; box-sizing:content-box; background:url('../images/design/ico_arw_go.png') no-repeat; background-size:4px 7px; background-position:calc(100% - 5px) center; background-color:#fff; border-radius:3px; border:1px solid #3784da; font-size:13px; color:#116f99; cursor:pointer}
+.btn_open_small {margin-top:2px; margin-bottom:2px; padding:0 16px 0 5px; height:23px; line-height:23px; box-sizing:content-box; background:url('../images/design/ico_arw_open.png') no-repeat; background-size:8px 5px; background-position:calc(100% - 5px) center; background-color:#fff; border-radius:3px; border:1px solid #c1c2c5; font-size:13px; color:#61656d; cursor:pointer}
+.btn_close_small {margin-top:2px; margin-bottom:2px; padding:0 16px 0 5px; height:23px; line-height:23px; box-sizing:content-box; background:url('../images/design/ico_arw_close.png') no-repeat; background-size:8px 5px; background-position:calc(100% - 5px) center; background-color:#fff; border-radius:3px; border:1px solid #c1c2c5; font-size:13px; color:#61656d; cursor:pointer}
+
+.btn_radius_black {display:inline-block; height:34px; line-height:30px; margin:1px 0; box-sizing:border-box; background-color:#404040; border-radius:3px; border:1px solid #2d2d2d; font-size:13px; color:#fff;}
+.btn_radius_white {display:inline-block; height:34px; line-height:30px; margin:1px 0; box-sizing:border-box; background-color:#fff; border-radius:3px; border:1px solid #c0c0c0; font-size:14px; color:#333; font-weight:600; text-align:center;}
+.btn_open_white {border:1px solid #fff; border-radius:2px; background:url('../images/common/ico_arw_open_w.png') no-repeat 90% center; background-size:8px 5px; background-color:transparent; color:#fff; font-size:13px; padding:3px 20px 5px 5px;}
+.btn_close_white {border:1px solid #fff; border-radius:2px; background:url('../images/common/ico_arw_close_w.png') no-repeat 90% center; background-size:8px 5px; background-color:transparent; color:#fff; font-size:13px; padding:3px 20px 5px 5px;}
+*/

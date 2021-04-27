@@ -1,0 +1,43 @@
+<%@page import="site.semi.dao.ScartDAO"%>
+<%@page import="site.semi.dto.ScartDTO"%>
+<%@page import="site.semi.dao.SproductDAO"%>
+<%@page import="site.semi.dto.SproductDTO"%>
+<%@page import="site.semi.dto.SmemberDTO"%>
+<%@page import="java.util.List"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@include file="/security/login_url.jspf" %>
+
+ <%	
+	
+ 	String name=request.getParameter("name");
+ 	String color=request.getParameter("color");
+ 	String image=request.getParameter("image");
+ 	String price=request.getParameter("price");
+ 	String qty=request.getParameter("qty");
+ 	int num=Integer.parseInt(request.getParameter("num"));
+
+ 	SproductDTO sproduct=SproductDAO.getDAO().selectNumSproduct(num);
+ 	
+ 	ScartDTO scart = new ScartDTO();
+ 	scart.setId(loginMember.getId());
+ 	scart.setName(sproduct.getName());
+ 	scart.setNum(sproduct.getNum());
+ 	scart.setQty(sproduct.getQty());
+ 	scart.setImage(sproduct.getImage());
+ 	scart.setPrice(sproduct.getPrice());
+ 	
+	ScartDAO.getDAO().insertScart(scart);	
+
+	
+%>
+
+<script type="text/javascript">
+	var confirm = confirm("장바구니에 등록되었습니다! 확인하시겠습니까?");
+	if(confirm){
+	location.href="<%=request.getContextPath() %>/index.jsp?workgroup=sproduct&work=sproduct_cart";
+		}else{
+			 location.href="<%=request.getContextPath() %>/index.jsp?workgroup=sproduct&work=sproduct_page&num=<%=num%>";
+		}
+</script>
+		
